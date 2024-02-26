@@ -15,7 +15,6 @@ const uint8_t PIN_XDATA = 8;
 const uint8_t PIN_XLATCH = A3;
 
 // aliases for address lines on the 74HC259 (pass to write259 function)
-const uint8_t X0 = 0;
 const uint8_t X1 = 1;
 const uint8_t X2 = 2;
 const uint8_t X3 = 3;
@@ -23,6 +22,7 @@ const uint8_t X4 = 4;
 const uint8_t X5 = 5;
 const uint8_t X6 = 6;
 const uint8_t X7 = 7;
+const uint8_t X8 = 8;
 
 void write259(uint8_t addr, bool value) {
   digitalWrite(PIN_X0, addr & 0x1);
