@@ -35,14 +35,14 @@ void write259(uint16_t addr, bool value) {
 
 // write an 8-bit value across low 8 output lines
 void writeByte259(uint8_t value) {
-  for (uint16_t n = 0; n < 8; n++) {
+  for (int n = 0; n < 8; n++) {
     write259(n, (value >> n) & 0x1);
   }
 }
 
 // write a 16-bit value across all 16 output lines
 void writeShort259(uint16_t value) {
-  for (uint16_t n = 0; n < 16; n++) {
+  for (int n = 0; n < 16; n++) {
     write259(n, (value >> n) & 0x1);
   }
 }
@@ -68,7 +68,7 @@ void setup() {
 void loop() {
   // blink all 8 lines in sequence
   const int ms = 500;
-  for (uint8_t addr = 0; addr < 16; addr++) {
+  for (int addr = 0; addr < 16; addr++) {
     write259(addr, HIGH);
     delay(ms);
     write259(addr, LOW);
