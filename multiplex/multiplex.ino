@@ -43,12 +43,15 @@ void setup() {
   pinMode(PIN_X2, OUTPUT);
   pinMode(PIN_XDATA, OUTPUT);
   reset259();
-
-  // put your setup code here, to run once:
-
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-
+  // blink all 8 lines in sequence
+  const int ms = 500;
+  for (uint8_t addr = 0; addr < 7; addr++) {
+    write259(addr, HIGH);
+    delay(ms);
+    write259(addr, LOW);
+    delay(ms);
+  }
 }
