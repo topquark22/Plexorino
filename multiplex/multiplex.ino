@@ -9,8 +9,10 @@ const uint8_t PIN_X0 = 2;
 const uint8_t PIN_X1 = 4;
 // 3's bit of output line (pin 3 of 74HC259)
 const uint8_t PIN_X2 = 7;
-// output latch data (pin 13 of 74HC259)
+// output data (pin 13 of 74HC259)
 const uint8_t PIN_XDATA = 8;
+// output latch data (pin 14 of 74HC259
+const uint8_t PIN_XLATCH = A3;
 
 // aliases for address lines on the 74HC259 (pass to write259 function)
 const uint8_t X0 = 0;
@@ -27,6 +29,9 @@ void write259(uint8_t addr, bool value) {
   digitalWrite(PIN_X1, (addr & 0x2) >> 1);
   digitalWrite(PIN_X2, (addr & 0x4) >> 2);
   digitalWrite(PIN_XDATA, value);
+  // latch data to output pin
+  digitalWrite(PIN_XLATCH, LOW);
+  digitalWrite(PIN_XLATCH, HIGH);
 }
 
 // reset all output latches to 0
@@ -42,6 +47,7 @@ void setup() {
   pinMode(PIN_X1, OUTPUT);
   pinMode(PIN_X2, OUTPUT);
   pinMode(PIN_XDATA, OUTPUT);
+  pinMode(PIN_XLATCH, OUTPUT);
   reset259();
 }
 
