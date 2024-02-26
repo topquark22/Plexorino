@@ -8,7 +8,7 @@ const uint8_t PIN_XA1 = 4;       // 2's bit of output line (pin 2 of 74HC259)
 const uint8_t PIN_XA2 = 7;       // 4's bit of output line (pin 3 of 74HC259)
 const uint8_t PIN_XDATA = 8;     // output data (pin 13 of 74HC259)
 const uint8_t PIN_XLATCH_0 = A3; // output latch (pin 14 of 74HC259 #1 for outputs 0-7)
-const uint8_t PIN_XLATCH_1 = A2; // output latch (pin 14 of 74HC259 #2 for outputs 8-15)
+const uint8_t PIN_XLATCH_8 = A2; // output latch (pin 14 of 74HC259 #2 for outputs 8-15)
 
 void write259(uint16_t addr, bool value) {
   digitalWrite(PIN_XA0, addr & 0x1);
@@ -18,8 +18,8 @@ void write259(uint16_t addr, bool value) {
   // latch data to output pin
   if (addr & 0x8) {
     // latch data on chip #1 for lines 8-15
-    digitalWrite(PIN_XLATCH_1, LOW);
-    digitalWrite(PIN_XLATCH_1, HIGH);
+    digitalWrite(PIN_XLATCH_8, LOW);
+    digitalWrite(PIN_XLATCH_8, HIGH);
   } else {
     // latch data on chip #2 for lines 0-7
     digitalWrite(PIN_XLATCH_0, LOW);
@@ -28,7 +28,7 @@ void write259(uint16_t addr, bool value) {
 }
 
 // write a 16-bit value across all 16 output lines
-void writeShort259(uint16_t value) {
+void writeBits(uint16_t value) {
   for (int addr = 0; addr < 16; addr++) {
     write259(addr, (value >> addr) & 0x1);
   }
@@ -36,8 +36,8 @@ void writeShort259(uint16_t value) {
 
 // reset all output latches to 0
 // (Note we don't use the reset pin of the chip; do it manually)
-void reset259() {
-  writeShort259(0);
+void reset() {
+  writeBits(0);
 }
 
 void setup() {
@@ -46,8 +46,8 @@ void setup() {
   pinMode(PIN_XA2, OUTPUT);
   pinMode(PIN_XDATA, OUTPUT);
   pinMode(PIN_XLATCH_0, OUTPUT);
-  pinMode(PIN_XLATCH_1, OUTPUT);
-  reset259();
+  pinMode(PIN_XLATCH_8, OUTPUT);
+  reset();
 }
 
 void loop() {
