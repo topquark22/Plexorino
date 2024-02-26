@@ -33,7 +33,15 @@ void write259(uint16_t addr, bool value) {
   }
 }
 
+// write an 8-bit value across low 8 output lines
 void writeByte259(uint8_t value) {
+  for (uint16_t n = 0; n < 8; n++) {
+    write259(n, (value >> n) & 0x1);
+  }
+}
+
+// write a 16-bit value across all 16 output lines
+void writeWord259(uint16_t value) {
   for (uint16_t n = 0; n < 16; n++) {
     write259(n, (value >> n) & 0x1);
   }
