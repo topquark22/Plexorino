@@ -64,6 +64,5 @@ void loop() {
     write259(addr, HIGH);
     delay(ms);
     write259(addr, LOW);
-    delay(ms);
   }
 }
