@@ -34,6 +34,12 @@ void write259(uint8_t addr, bool value) {
   digitalWrite(PIN_XLATCH, HIGH);
 }
 
+void writeByte259(uint8_t value) {
+  for (uint8_t n = 0; n < 8; n++) {
+    write259(n, (value >> n) & 0x1);
+  }
+}
+
 // reset all output latches to 0
 // (Note we don't use the reset pin of the chip; do it manually)
 void reset259() {
