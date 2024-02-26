@@ -41,7 +41,7 @@ void writeByte259(uint8_t value) {
 }
 
 // write a 16-bit value across all 16 output lines
-void writeWord259(uint16_t value) {
+void writeShort259(uint16_t value) {
   for (uint16_t n = 0; n < 16; n++) {
     write259(n, (value >> n) & 0x1);
   }
