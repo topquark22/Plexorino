@@ -30,7 +30,7 @@ void write259(uint8_t addr, bool value) {
 }
 
 // reset all output latches to 0
-// (Note we don't use the reset functionality of the chip; need to do it manually)
+// (Note we don't use the reset pin of the chip; do it manually)
 void reset259() {
   for (uint8_t i = 0; i < 8; i++) {
     write259(i, LOW);
@@ -48,7 +48,7 @@ void setup() {
 void loop() {
   // blink all 8 lines in sequence
   const int ms = 500;
-  for (uint8_t addr = 0; addr < 7; addr++) {
+  for (uint8_t addr = 0; addr < 8; addr++) {
     write259(addr, HIGH);
     delay(ms);
     write259(addr, LOW);
