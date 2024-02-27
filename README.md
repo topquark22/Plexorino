@@ -1,6 +1,6 @@
 # 74HC259-Ino
 
-Skeleton code for using the 74HC259 addressable latch with Arduino. This provides you with additional output lines as needed by your application.
+Skeleton code for using the 74HC259 addressable latch with Arduino. This provides you with additional digital output lines as needed by your application.
 
 ## configuration options
 
