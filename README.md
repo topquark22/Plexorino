@@ -4,7 +4,7 @@ Skeleton code for using the 74HC259 addressable latch with Arduino. This provide
 
 ## configuration options
 
-### 1-bank
+### 8 output lines
 
 At the expense of 5 output pins on the Arduino, it provides 8 output pins on one 74HC259.
 
@@ -12,7 +12,7 @@ Comment out the line `#define USE_BANK2` at the top of the file.
 
 This frees up A2 for other uses.
 
-### 2-bank
+### 16 output lines
 
 At the expense of 6 output pins on the Arduino, it provides 16 output pins on two 74HC259.
 
