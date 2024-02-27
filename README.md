@@ -39,7 +39,7 @@ Note we do not use any of the PWM, SPI or I2C pins, so those are free for your a
 |-----|------|-------------------------------|--------|
 | 1   | both | output line address, 1's bit  | D2     |
 | 2   | both | output line address, 2's bit  | D4     |
-| 3   | both |output line address, 4's bit   | D7     |
+| 3   | both | output line address, 4's bit  | D7     |
 | 4   | 1,2  | Line 0,8 output               | custom |
 | 5   | 1,2  | Line 1,9 output               | custom |
 | 6   | 1,2  | Line 2,10 output              | custom |
