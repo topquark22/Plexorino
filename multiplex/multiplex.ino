@@ -2,29 +2,19 @@
  * Interface to 74HC259 multiplex latch chip
  */
 
-
-// uncomment this if you need more than 4 lines
-#define USE_D7
-
-// uncomment this if you need more than 8 lines
-// #define USE_BANK2
+// remove this if you need pin A2 for something else
+#define USE_BANK2
 
 #ifdef USE_BANK2
   #define NUM_LINES 16
 #else
-  #ifdef USE_D7
-    #define NUM_LINES 8
-  #else
-    #define NUM_LINES 4
-  #endif
+  #define NUM_LINES 8
 #endif
 
 // 74HC259 pins: (note we don't use any PWM-capable output pins, SPI or I2C pins)
 const uint8_t PIN_XA0 = 2;       // 1's bit of line address (pin 1 of 74HG259)
 const uint8_t PIN_XA1 = 4;       // 2's bit of line address (pin 2 of 74HC259)
-#ifdef USE_D7
 const uint8_t PIN_XA2 = 7;       // 4's bit of line address (pin 3 of 74HC259)
-#endif
 const uint8_t PIN_XDATA = 8;     // output data (pin 13 of 74HC259)
 const uint8_t PIN_XLATCH_0 = A3; // latch enable (pin 14 of 74HC259 #1 for outputs 0-7)
 #ifdef USE_BANK2
@@ -36,9 +26,7 @@ const unsigned int LATCH_DLY = 5; // Latch hold-down time (microseconds)
 void write259(uint16_t addr, bool value) {
   digitalWrite(PIN_XA0, addr & 0x1);
   digitalWrite(PIN_XA1, (addr & 0x2) >> 1);
-  #ifdef USE_D7
   digitalWrite(PIN_XA2, (addr & 0x4) >> 2);
-  #endif
   digitalWrite(PIN_XDATA, value);
   // latch data onto output line
 #ifdef USE_BANK2
@@ -77,9 +65,7 @@ void reset() {
 void setup259() {
   pinMode(PIN_XA0, OUTPUT);
   pinMode(PIN_XA1, OUTPUT);
-  #ifdef USE_D7
   pinMode(PIN_XA2, OUTPUT);
-  #endif
   pinMode(PIN_XDATA, OUTPUT);
   pinMode(PIN_XLATCH_0, OUTPUT);
 #ifdef USE_BANK2
