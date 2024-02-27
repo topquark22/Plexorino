@@ -2,7 +2,7 @@
  * Interface to LM259 multiplex latch chip
  */
 
-// remove this if you use pin A2 for something else
+// remove this if you need pin A2 for something else
 #define USE_BANK2
 
 #ifdef USE_BANK2
@@ -18,7 +18,7 @@ const uint8_t PIN_XA2 = 7;       // 4's bit of line address (pin 3 of 74HC259)
 const uint8_t PIN_XDATA = 8;     // output data (pin 13 of 74HC259)
 const uint8_t PIN_XLATCH_0 = A3; // latch enable (pin 14 of 74HC259 #1 for outputs 0-7)
 #ifdef USE_BANK2
-const uint8_t PIN_XLATCH_8 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15,)
+const uint8_t PIN_XLATCH_8 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15)
 #endif
 
 const unsigned int LATCH_DLY = 5; // Latch hold-down time (microseconds)
@@ -49,7 +49,7 @@ void write259(uint16_t addr, bool value) {
 #endif
 }
 
-// write a 16-bit value across all 16 output lines
+// write bits of a value across all output lines
 void writeBits(uint16_t value) {
   for (int addr = 0; addr < NUM_LINES; addr++) {
     write259(addr, (value >> addr) & 0x1);
@@ -75,7 +75,7 @@ void setup() {
 }
 
 void loop() {
-  // blink all 16 lines in sequence
+  // blink all lines in sequence
   const int ms = 500;
   for (int addr = 0; addr < NUM_LINES; addr++) {
     write259(addr, HIGH);
