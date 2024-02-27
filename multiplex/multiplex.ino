@@ -1,5 +1,5 @@
 /**
- * Interface to LM259 multiplex latch chip
+ * Interface to 74HC259 multiplex latch chip
  */
 
 // remove this if you need pin A2 for something else
