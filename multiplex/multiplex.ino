@@ -3,12 +3,12 @@
  */
 
 // 74HC259 pins: (note we don't use any PWM-capable output pins, SPI or I2C pins)
-const uint8_t PIN_XA0 = 2;       // 1's bit of output line (pin 1 of 74HG259)
-const uint8_t PIN_XA1 = 4;       // 2's bit of output line (pin 2 of 74HC259)
-const uint8_t PIN_XA2 = 7;       // 4's bit of output line (pin 3 of 74HC259)
+const uint8_t PIN_XA0 = 2;       // 1's bit of line address (pin 1 of 74HG259)
+const uint8_t PIN_XA1 = 4;       // 2's bit of line address (pin 2 of 74HC259)
+const uint8_t PIN_XA2 = 7;       // 4's bit of line address (pin 3 of 74HC259)
 const uint8_t PIN_XDATA = 8;     // output data (pin 13 of 74HC259)
-const uint8_t PIN_XLATCH_0 = A3; // output latch (pin 14 of 74HC259 #1 for outputs 0-7)
-const uint8_t PIN_XLATCH_8 = A2; // output latch (pin 14 of 74HC259 #2 for outputs 8-15)
+const uint8_t PIN_XLATCH_0 = A3; // latch enable (pin 14 of 74HC259 #1 for outputs 0-7)
+const uint8_t PIN_XLATCH_8 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15)
 
 void write259(uint16_t addr, bool value) {
   digitalWrite(PIN_XA0, addr & 0x1);
@@ -51,7 +51,7 @@ void setup() {
 }
 
 void loop() {
-  // blink all 8 lines in sequence
+  // blink all 16 lines in sequence
   const int ms = 500;
   for (int addr = 0; addr < 16; addr++) {
     write259(addr, HIGH);
