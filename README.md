@@ -55,4 +55,4 @@ Note we do not use any of the PWM, SPI or I2C pins, so those are free for your a
 | 15  | both | Master reset (note 1)         | +5V    |
 | 16  | both | Vdd                           | +5V    |
 
-Note 1: You can implement master reset in your own code, but this sketch does not use it.
+Note 1: You can implement master reset in your own circuit, but this sketch does not use it.
