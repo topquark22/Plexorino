@@ -31,18 +31,18 @@ void write259(uint16_t addr, bool value) {
   // latch data onto output line
 #ifdef USE_BANK2
   if (addr & 0x8) {
-    // latch data on chip #1 for lines 8-15
+    // latch data on chip #2 for lines 8-15
     digitalWrite(PIN_XLATCH_8, LOW);
     delayMicroseconds(LATCH_DLY);
     digitalWrite(PIN_XLATCH_8, HIGH);
   } else {
-    // latch data on chip #2 for lines 0-7
+    // latch data on chip #1 for lines 0-7
     digitalWrite(PIN_XLATCH_0, LOW);
     delayMicroseconds(LATCH_DLY);
     digitalWrite(PIN_XLATCH_0, HIGH);
   }
 #else
-  // latch data on chip #2 for lines 0-7
+  // latch data on chip #1 for lines 0-7
   digitalWrite(PIN_XLATCH_0, LOW);
   delayMicroseconds(LATCH_DLY);
   digitalWrite(PIN_XLATCH_0, HIGH);
