@@ -62,7 +62,7 @@ void reset() {
   writeBits(0);
 }
 
-void setup() {
+void setup259() {
   pinMode(PIN_XA0, OUTPUT);
   pinMode(PIN_XA1, OUTPUT);
   pinMode(PIN_XA2, OUTPUT);
@@ -74,8 +74,15 @@ void setup() {
   reset();
 }
 
-void loop() {
-  // blink all lines in sequence
+void setup() {
+  setup259();
+
+  // Put your custom setup code here ...
+  
+}
+
+// blink all lines in sequence
+void testRoutine() {
   const int ms = 500;
   for (int addr = 0; addr < NUM_LINES; addr++) {
     write259(addr, HIGH);
@@ -83,4 +90,11 @@ void loop() {
     write259(addr, LOW);
     delay(ms);
   }
+}
+
+void loop() {
+
+  // Put your custom loop code here ...
+
+  testRoutine(); 
 }
