@@ -10,19 +10,23 @@ const uint8_t PIN_XDATA = 8;     // output data (pin 13 of 74HC259)
 const uint8_t PIN_XLATCH_0 = A3; // latch enable (pin 14 of 74HC259 #1 for outputs 0-7)
 const uint8_t PIN_XLATCH_8 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15)
 
+const uint16_t LATCH_DLY = 5; // Latch hold-down time (microseconds)
+
 void write259(uint16_t addr, bool value) {
   digitalWrite(PIN_XA0, addr & 0x1);
   digitalWrite(PIN_XA1, (addr & 0x2) >> 1);
   digitalWrite(PIN_XA2, (addr & 0x4) >> 2);
   digitalWrite(PIN_XDATA, value);
-  // latch data to output pin
+  // latch data onto output line
   if (addr & 0x8) {
     // latch data on chip #1 for lines 8-15
     digitalWrite(PIN_XLATCH_8, LOW);
+    delayMicroseconds(LATCH_DLY);
     digitalWrite(PIN_XLATCH_8, HIGH);
   } else {
     // latch data on chip #2 for lines 0-7
     digitalWrite(PIN_XLATCH_0, LOW);
+    delayMicroseconds(LATCH_DLY);
     digitalWrite(PIN_XLATCH_0, HIGH);
   }
 }
@@ -57,5 +61,6 @@ void loop() {
     write259(addr, HIGH);
     delay(ms);
     write259(addr, LOW);
+    delay(ms);
   }
 }
