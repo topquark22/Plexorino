@@ -10,7 +10,7 @@ const uint8_t PIN_XDATA = 8;     // output data (pin 13 of 74HC259)
 const uint8_t PIN_XLATCH_0 = A3; // latch enable (pin 14 of 74HC259 #1 for outputs 0-7)
 const uint8_t PIN_XLATCH_8 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15)
 
-const uint16_t LATCH_DLY = 5; // Latch hold-down time (microseconds)
+const unsigned int LATCH_DLY = 5; // Latch hold-down time (microseconds)
 
 void write259(uint16_t addr, bool value) {
   digitalWrite(PIN_XA0, addr & 0x1);
