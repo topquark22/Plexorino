@@ -7,8 +7,8 @@ Plexorino brings you skeleton code for multiplexer and demultiplexer to achieve 
 A design goal was to minimize the number of GPIO pins used. In particular:
 
 - We have left pins 9-13 free, which are used by SPI.
-- We have left A4, A5 free, which are used by I2C.
-- We have left the pins 5, 6, 7 free, of which 5 and 6 are PWM-capable.
+- We have left pins A4, A5 free, which are used by I2C.
+- We have left pins 5, 6, 7 free, of which 5 and 6 are PWM-capable.
 
 | module          | description             | I.C. used  | GPIO pins used     |
 |-----------------|-------------------------|------------|--------------------|
