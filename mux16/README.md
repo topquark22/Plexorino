@@ -19,11 +19,11 @@
 | 8   | E0  | custom |
 | 9   | strobe | GND \[1\] |
 | 10 | multiplexed signal (inverted) | A0 |
-| 11 | addr 8's bit | A1 |
+| 11 | address bus 3 | A1 |
 | 12 | Vss | GND |
-| 13 | addr 4's bit | D4 |
-| 14 | addr 2's bit | D3 |
-| 15 | addr 1's bit | D2 |
+| 13 | address bus 2 | D4 |
+| 14 | address bus 1 | D3 |
+| 15 | address bus 0 | D2 |
 | 16 | E15 | custom |
 | 17 | E14 | custom | 
 | 18 | E13 | custom | 
