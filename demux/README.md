@@ -47,4 +47,4 @@ Note that we have left all of the SPI and I2C pins free.
 | 15  | both | master reset     | +5V \[1] |
 | 16  | both | Vdd              | +5V     |
 
-\[1] You can implement master reset in your circuit, but this sketch does not use it.
+\[1] You can implement master reset in your circuit, but stock Plexorino does not use it.
