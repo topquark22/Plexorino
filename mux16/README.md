@@ -6,7 +6,7 @@
 
 Note that we have left all of the SPI and I2C pins free.
 
-- **E\***: Demultiplexed input signals
+- **En**: Input signal at address n
 - custom: From your circuit
 
 | pin | function | wire to |
@@ -36,4 +36,4 @@ Note that we have left all of the SPI and I2C pins free.
 | 23 | E8 | custom |
 | 24 | Vdd | +5V |
 
- \[1\] You can implement STROBE in your circuit, but this sketch does not use it.
+ \[1\] You can implement STROBE in your circuit, but the stock Plexorino does not use it.
