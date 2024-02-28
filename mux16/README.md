@@ -2,7 +2,9 @@
 
 16-line multiplexer for input to Arduino.
 
-## 74LS150 pinout
+## 74LS150 pinout and wiring
+
+Note that we have left all of the SPI and I2C pins free.
 
 - **E\***: Demultiplexed input signals
 - custom: From your circuit
