@@ -9,7 +9,7 @@ const uint8_t PIN_MA3 = A1; // addr 8's bit, to mux pin 11
 const uint8_t PIN_MD_ = A0; // data read, to mux pin 10 (inverted)
 
 // read the input at mux address addr
-bool read154(uint8_t addr) {
+bool readMux16(uint8_t addr) {
   digitalWrite(PIN_MA0, addr & 0x1);
   digitalWrite(PIN_MA1, (addr >> 1) & 0x1);
   digitalWrite(PIN_MA2, (addr >> 2) & 0x1);
