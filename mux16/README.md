@@ -4,7 +4,7 @@
 
 ## 74LS150 pinout
 
-**E\***: input signals
+**E\***: demultiplexed input signals
 
 | pin | function | wire to |
 |-----|----------|---------|

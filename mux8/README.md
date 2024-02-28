@@ -4,14 +4,14 @@
 
 ## 74LS151 pinout
 
-**D\***: input signals
+**E\***: Demultiplexed input signals
 
 | pin | function | wire to |
 |-----|----------|---------|
-| 1   | D3  | custom |
-| 2   | D2  | custom |
-| 3   | D1  | custom |
-| 4   | D0  | custom |
+| 1   | E3  | custom |
+| 2   | E2  | custom |
+| 3   | E1  | custom |
+| 4   | E0  | custom |
 | 5   | multiplexed signal  | A0 |
 | 6   | multiplexed signal (inverted)  |  |
 | 7   | strobe  | GND \[1\] |
@@ -19,10 +19,10 @@
 | 9 | addr 4's bit | D4 |
 | 10 | addr 2's bit | D3 |
 | 11 | addr 1's bit | D2 |
-| 12 | D7 | custom |
-| 13 | D6 | custom | 
-| 14 | D5 | custom | 
-| 15 | D4 | custom |
+| 12 | E7 | custom |
+| 13 | E6 | custom | 
+| 14 | E5 | custom | 
+| 15 | E4 | custom |
 | 16 | Vdd | +5V |
 
  \[1\] You can implement STROBE in your circuit, but this sketch does not use it.
