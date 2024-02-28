@@ -19,7 +19,7 @@ bool read151(uint8_t addr) {
   pinMode(PIN_MA0, OUTPUT);
   pinMode(PIN_MA1, OUTPUT);
   pinMode(PIN_MA2, OUTPUT);
-  // 74LS151 already has input pullups
+  // 74LS151 already has input pullups (refer to datasheet)
   pinMode(PIN_MD, INPUT_PULLUP);
 
   // put your setup code here, to run once
