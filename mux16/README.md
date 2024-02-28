@@ -1,4 +1,4 @@
-## 74LS151 pinout
+## 74LS150 pinout
 
 **E\***: input lines
 
