@@ -39,7 +39,7 @@ Note that we left all of the PWM-capable, SPI and I2C pins free.
 | 10  | 1,2  | line 5,13 output       | custom  |
 | 11  | 1,2  | line 6,14 output       | custom  |
 | 12  | 1,2  | line 7,15 output       | custom  |
-| 13  | both | data input             | A0      |
+| 13  | both | data input             | D8      |
 | 14  | 1    | latch enable           | A3      |
 | 14  | 2    | latch enable           | A2      |
 | 15  | both | master reset           | +5V \[1] |
