@@ -1,6 +1,6 @@
 # Plexorino/demux
 
-Skeleton code for using the 74HC259 addressable latch with Arduino. This increases the number of digital outputs.
+Skeleton code for using the 74HC259 addressable latch as a demultiplexer with Arduino. This increases the number of digital outputs.
 
 ## Configurations
 
