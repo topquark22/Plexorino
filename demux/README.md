@@ -28,8 +28,8 @@ Note that we left all of the PWM-capable, SPI and I2C pins free.
 | pin | Chip | description            | wiring  |
 |-----|------|------------------------|---------|
 | 1   | both | line address, 1's bit  | D2      |
-| 2   | both | line address, 2's bit  | D4      |
-| 3   | both | line address, 4's bit  | D7      |
+| 2   | both | line address, 2's bit  | D3      |
+| 3   | both | line address, 4's bit  | D4      |
 | 4   | 1,2  | line 0,8 output        | custom  |
 | 5   | 1,2  | line 1,9 output        | custom  |
 | 6   | 1,2  | line 2,10 output       | custom  |
@@ -39,7 +39,7 @@ Note that we left all of the PWM-capable, SPI and I2C pins free.
 | 10  | 1,2  | line 5,13 output       | custom  |
 | 11  | 1,2  | line 6,14 output       | custom  |
 | 12  | 1,2  | line 7,15 output       | custom  |
-| 13  | both | data input             | D8      |
+| 13  | both | data input             | A0      |
 | 14  | 1    | latch enable           | A3      |
 | 14  | 2    | latch enable           | A2      |
 | 15  | both | master reset           | +5V \[1] |

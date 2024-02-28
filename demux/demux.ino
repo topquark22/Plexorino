@@ -11,11 +11,11 @@
   #define NUM_LINES 8
 #endif
 
-// 74HC259 pins: (note we don't use any PWM-capable, SPI or I2C pins)
+// 74HC259 pins: (note we don't use any SPI or I2C pins)
 const uint8_t PIN_XA0 = 2;       // 1's bit of line address (pin 1 of 74HG259)
-const uint8_t PIN_XA1 = 4;       // 2's bit of line address (pin 2 of 74HC259)
-const uint8_t PIN_XA2 = 7;       // 4's bit of line address (pin 3 of 74HC259)
-const uint8_t PIN_XDATA = 8;     // output data (pin 13 of 74HC259)
+const uint8_t PIN_XA1 = 3;       // 2's bit of line address (pin 2 of 74HC259)
+const uint8_t PIN_XA2 = 4;       // 4's bit of line address (pin 3 of 74HC259)
+const uint8_t PIN_XDATA = A0;     // output data (pin 13 of 74HC259)
 const uint8_t PIN_XLATCH_0 = A3; // latch enable (pin 14 of 74HC259 #1 for outputs 0-7)
 #ifdef USE_BANK2
 const uint8_t PIN_XLATCH_8 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15)
