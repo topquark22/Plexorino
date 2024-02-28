@@ -1,11 +1,11 @@
 /**
- * Interface to 74HC259 multiplex latch chip
+ * Interface to 74HC259 multiplex latch
  */
 
-// remove this if you need pin A2 for something else
-#define USE_BANK2
+// remove this if your use-case is 8-output
+#define USE_CHIP1
 
-#ifdef USE_BANK2
+#ifdef USE_CHIP1
   #define NUM_LINES 16
 #else
   #define NUM_LINES 8
@@ -17,7 +17,7 @@ const uint8_t PIN_XA1 = 3;       // 2's bit of line address (pin 2 of 74HC259)
 const uint8_t PIN_XA2 = 4;       // 4's bit of line address (pin 3 of 74HC259)
 const uint8_t PIN_XDATA = 8;     // data to latch (pin 13 of 74HC259)
 const uint8_t PIN_XLATCH_0 = A3; // latch enable (pin 14 of 74HC259 #1 for outputs 0-7)
-#ifdef USE_BANK2
+#ifdef USE_CHIP1
 const uint8_t PIN_XLATCH_8 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15)
 #endif
 
@@ -27,18 +27,18 @@ void writeDemux(uint16_t addr, bool value) {
   digitalWrite(PIN_XA2, (addr & 0x4) >> 2);
   digitalWrite(PIN_XDATA, value);
   // latch data onto output line
-#ifdef USE_BANK2
+#ifdef USE_CHIP1
   if (addr & 0x8) {
-    // latch data on chip #2 for lines 8-15
+    // latch data on Chip 1 for addresses 8-15
     digitalWrite(PIN_XLATCH_8, LOW);
     digitalWrite(PIN_XLATCH_8, HIGH);
   } else {
-    // latch data on chip #1 for lines 0-7
+    // latch data on Chip 0 for addresses 0-7
     digitalWrite(PIN_XLATCH_0, LOW);
     digitalWrite(PIN_XLATCH_0, HIGH);
   }
 #else
-  // latch data on chip #1 for lines 0-7
+  // latch data on Chip 0 for addresses 0-7
   digitalWrite(PIN_XLATCH_0, LOW);
   digitalWrite(PIN_XLATCH_0, HIGH);
 #endif
@@ -63,7 +63,7 @@ void setupDemux() {
   pinMode(PIN_XA2, OUTPUT);
   pinMode(PIN_XDATA, OUTPUT);
   pinMode(PIN_XLATCH_0, OUTPUT);
-#ifdef USE_BANK2
+#ifdef USE_CHIP1
   pinMode(PIN_XLATCH_8, OUTPUT);
 #endif
   reset();
