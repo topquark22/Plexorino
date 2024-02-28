@@ -10,7 +10,7 @@ Skeleton code for using the 74HC259 addressable latch with Arduino. This increas
 
 ## Wiring
 
-Note that we left all of the SPI and I2C pins free.
+Note that we have left all of the SPI and I2C pins free.
 
 **Arduino:**
 
