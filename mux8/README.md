@@ -14,11 +14,11 @@
 | 4   | D0  | custom |
 | 5   | multiplexed signal  | A0 |
 | 6   | multiplexed signal (inverted)  |  |
-| 7   | strobe  | GND [1] |
+| 7   | strobe  | GND \[1\] |
 | 8   | Vss  | GND |
-| 9 | addr 4's bit | D8 |
-| 10 | addr 2's bit | D7 |
-| 11 | addr 1's bit | D6 |
+| 9 | addr 4's bit | D7 |
+| 10 | addr 2's bit | D6 |
+| 11 | addr 1's bit | D5 |
 | 12 | D7 | custom |
 | 13 | D6 | custom | 
 | 14 | D5 | custom | 
