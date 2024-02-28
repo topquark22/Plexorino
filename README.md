@@ -6,7 +6,7 @@ Skeleton code for using the 74HC259 addressable latch with Arduino. This increas
 
 * **16 outputs:** At the expense of taking up 6 output pins on the Arduino, 16 output lines are available with the use of two 74HC259 chips.
   
-* **8 outputs:** Pin A2 is assigned to control the second 74HC259 (if present.) If you only need 8 outputs, then comment out the line `#define USE_BANK2` at the top of `multiplex.ino`. This frees up A2 to be used for something else.
+* **8 outputs:** Pin A2 is assigned to control the second 74HC259 (if present.) If you only need 8 outputs, then comment out `#define USE_BANK2` at the top of `multiplex.ino`. This frees up A2 to be used for something else.
 
 ## Wiring
 
