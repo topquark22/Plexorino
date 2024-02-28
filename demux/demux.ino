@@ -21,7 +21,7 @@ const uint8_t PIN_XLATCH_0 = A3; // latch enable (pin 14 of 74HC259 #1 for outpu
 const uint8_t PIN_XLATCH_8 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15)
 #endif
 
-void write259(uint16_t addr, bool value) {
+void writeDemux(uint16_t addr, bool value) {
   digitalWrite(PIN_XA0, addr & 0x1);
   digitalWrite(PIN_XA1, (addr & 0x2) >> 1);
   digitalWrite(PIN_XA2, (addr & 0x4) >> 2);
@@ -45,19 +45,19 @@ void write259(uint16_t addr, bool value) {
 }
 
 // write bits of a value across all output lines
-void writeBits(uint16_t value) {
+void writeBitsDemux(uint16_t value) {
   for (int addr = 0; addr < NUM_LINES; addr++) {
-    write259(addr, (value >> addr) & 0x1);
+    writeDemux(addr, (value >> addr) & 0x1);
   }
 }
 
 // reset all output latches to 0
 // (Note we don't use the reset pin of the chip; do it manually)
 void reset() {
-  writeBits(0);
+  writeBitsDemux(0);
 }
 
-void setup259() {
+void setupDemux() {
   pinMode(PIN_XA0, OUTPUT);
   pinMode(PIN_XA1, OUTPUT);
   pinMode(PIN_XA2, OUTPUT);
@@ -70,7 +70,7 @@ void setup259() {
 }
 
 void setup() {
-  setup259();
+  setupDemux();
 
   // Put your custom setup code here ...
   
@@ -80,9 +80,9 @@ void setup() {
 void testRoutine() {
   const int ms = 500;
   for (int addr = 0; addr < NUM_LINES; addr++) {
-    write259(addr, HIGH);
+    writeDemux(addr, HIGH);
     delay(ms);
-    write259(addr, LOW);
+    writeDemux(addr, LOW);
     delay(ms);
   }
 }
