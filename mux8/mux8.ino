@@ -15,12 +15,16 @@ bool readMux8(uint8_t addr) {
   return digitalRead(PIN_DATA);
 }
 
- void setup() {
+ void setup_mux8() {
   pinMode(PIN_ADDR0, OUTPUT);
   pinMode(PIN_ADDR1, OUTPUT);
   pinMode(PIN_ADDR2, OUTPUT);
   // 74LS151 already has input pullups (refer to datasheet)
-  pinMode(PIN_DATA, INPUT_PULLUP);
+  pinMode(PIN_DATA, INPUT);
+ }
+
+ void setup() {
+  setup_mux8();
 
   // put your setup code here, to run once
   

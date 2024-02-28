@@ -19,12 +19,17 @@ bool readMux16(uint8_t addr) {
   return !digitalRead(PIN_DATA);
 }
 
- void setup() {
+ void setup_mux16() {
   pinMode(PIN_ADDR0, OUTPUT);
   pinMode(PIN_ADDR1, OUTPUT);
   pinMode(PIN_ADDR2, OUTPUT);
+  pinMode(PIN_ADDR3, OUTPUT);
   // 74LS150 already has input pullups (refer to data sheet)
   pinMode(PIN_DATA, INPUT);
+ }
+
+ void setup() {
+  setup_mux16();
 
   // put your setup code here, to run once
   
