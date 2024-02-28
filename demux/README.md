@@ -18,8 +18,8 @@ Skeleton code for using the 74HC259 addressable latch with Arduino. This increas
 | D3  | address bus 1         | 2           |
 | D4  | address bus 2         | 3           |
 | D8  | data to latch         | 13          |
-| A3  | latch enable (chip 1) | 14 (chip 1) |
-| A2  | latch enable (chip 2) | 14 (chip 2) |
+| A3  | latch enable (addr 0-7) | 14 (chip 1) |
+| A2  | latch enable (addr 8-15) | 14 (chip 2) |
 
 **74HC259:**
 
