@@ -1,6 +1,6 @@
 # Plexorino
 
-With additional hardware, we can expand the number of digital input/output pins on the Arduino, beyond the bare GPIO provided.
+With additional hardware, we can expand the number of digital input/output pins on the Arduino beyond the bare GPIO provided.
 
 Plexorino brings you skeleton code for multiplexer and demultiplexer to achieve this. Take this logic and use it in your own circuit project.
 
