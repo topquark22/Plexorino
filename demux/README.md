@@ -41,7 +41,7 @@ The 74HC259 chips are 0, and 1 (if present).
 | 10  | 0,1 |  line 5,13 output | custom  |
 | 11  | 0,1  | line 6,14 output | custom  |
 | 12  | 0,1  | line 7,15 output | custom  |
-| 13  | both | data to latch    | D8      |
+| 13  | both | data             | D8      |
 | 14  | 0    | latch enable     | A3      |
 | 14  | 1    | latch enable     | A2      |
 | 15  | both | master reset     | +5V \[1] |
