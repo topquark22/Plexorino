@@ -1,6 +1,6 @@
 ## 74LS151 pinout
 
-**E* **: input lines
+**E\***: input lines
 
 | pin | function | wire to |
 |-----|----------|---------|
