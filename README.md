@@ -1,4 +1,4 @@
-# Multiplexorino
+# Demultiplexorino
 
 Skeleton code for using the 74HC259 addressable latch with Arduino. This increases the number of digital outputs.
 
