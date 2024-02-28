@@ -29,24 +29,24 @@ Note we do not use any of the PWM, SPI or I2C pins, so those are free for your a
 
 **74HC259:**
 
-| pin | Chip | description            | wiring |
-|-----|------|------------------------|--------|
-| 1   | both | line address, 1's bit  | D2     |
-| 2   | both | line address, 2's bit  | D4     |
-| 3   | both | line address, 4's bit  | D7     |
-| 4   | 1,2  | Line 0,8 output        | custom |
-| 5   | 1,2  | Line 1,9 output        | custom |
-| 6   | 1,2  | Line 2,10 output       | custom |
-| 7   | 1,2  | Line 3,11 output       | custom |
-| 8   | both | Vss                    | GND    |
-| 9   | 1,2  | Line 4,12 output       | custom |
-| 10  | 1,2  | Line 5,13 output       | custom |
-| 11  | 1,2  | Line 6,14 output       | custom |
-| 12  | 1,2  | Line 7,15 output       | custom |
-| 13  | both | data input             | D8     |
-| 14  | 1    | Latch enable           | A3     |
-| 14  | 2    | Latch enable           | A2     |
-| 15  | both | Master reset (note 1)  | +5V    |
-| 16  | both | Vdd                    | +5V    |
+| pin | Chip | description            | wiring  |
+|-----|------|------------------------|---------|
+| 1   | both | line address, 1's bit  | D2      |
+| 2   | both | line address, 2's bit  | D4      |
+| 3   | both | line address, 4's bit  | D7      |
+| 4   | 1,2  | Line 0,8 output        | custom  |
+| 5   | 1,2  | Line 1,9 output        | custom  |
+| 6   | 1,2  | Line 2,10 output       | custom  |
+| 7   | 1,2  | Line 3,11 output       | custom  |
+| 8   | both | Vss                    | GND     |
+| 9   | 1,2  | Line 4,12 output       | custom  |
+| 10  | 1,2  | Line 5,13 output       | custom  |
+| 11  | 1,2  | Line 6,14 output       | custom  |
+| 12  | 1,2  | Line 7,15 output       | custom  |
+| 13  | both | data input             | D8      |
+| 14  | 1    | Latch enable           | A3      |
+| 14  | 2    | Latch enable           | A2      |
+| 15  | both | Master reset           | +5V \[1] |
+| 16  | both | Vdd                    | +5V     |
 
-Note 1: You can implement master reset in your own circuit, but this sketch does not use it.
+\[1] You can implement master reset in your own circuit, but this sketch does not use it.
