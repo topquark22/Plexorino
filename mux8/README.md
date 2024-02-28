@@ -6,7 +6,7 @@
 
 Note that we have left all of the SPI and I2C pins free.
 
-- **E\***: Demultiplexed input signals
+- **En**: Input signal at address n
 - custom: From your circuit
 
 | pin | function | wire to |
