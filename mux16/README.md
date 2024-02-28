@@ -1,3 +1,7 @@
+# Plexorino/mux16
+
+16-line multiplexer for input to Arduino.
+
 ## 74LS150 pinout
 
 **E\***: input signals
