@@ -2,21 +2,23 @@
 
 8-line multiplexer for input to Arduino.
 
-## 74LS151 pinout
+## 74LS151 pinout and wiring
+
+Note that we have left all of the SPI and I2C pins free.
 
 - **E\***: Demultiplexed input signals
 - custom: From your circuit
 
 | pin | function | wire to |
 |-----|----------|---------|
-| 1   | E3  | custom |
-| 2   | E2  | custom |
-| 3   | E1  | custom |
-| 4   | E0  | custom |
+| 1   | E3       | custom  |
+| 2   | E2       | custom  |
+| 3   | E1       | custom  |
+| 4   | E0       | custom  |
 | 5   | multiplexed signal  | A0 |
-| 6   | multiplexed signal (inverted)  |  |
+| 6   | multiplexed signal (inverted) |  |
 | 7   | strobe  | GND \[1\] |
-| 8   | Vss  | GND |
+| 8   | Vss     | GND |
 | 9 | address bus 2 | D4 |
 | 10 | address bus 1 | D3 |
 | 11 | address bus 0 | D2 |
