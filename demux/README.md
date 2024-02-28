@@ -25,6 +25,8 @@ Note that we left all of the PWM-capable, SPI and I2C pins free.
 
 **74HC259:**
 
+custom: Your circuit
+
 | pin | Chip | description            | wiring  |
 |-----|------|------------------------|---------|
 | 1   | both | line address, 1's bit  | D2      |
