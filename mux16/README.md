@@ -20,9 +20,9 @@
 | 10 | multiplexed signal (inverted) | A0 |
 | 11 | addr 8's bit | A1 |
 | 12 | Vss | GND |
-| 13 | addr 4's bit | D8 |
-| 14 | addr 2's bit | D7 |
-| 15 | addr 1's bit | D6 |
+| 13 | addr 4's bit | D4 |
+| 14 | addr 2's bit | D3 |
+| 15 | addr 1's bit | D2 |
 | 16 | E15 | custom |
 | 17 | E14 | custom | 
 | 18 | E13 | custom | 

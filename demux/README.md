@@ -17,8 +17,8 @@ Note that we left all of the PWM-capable, SPI and I2C pins free.
 | pin | description           | 74HC259 pin |
 |-----|-----------------------|-------------|
 | D2  | line address, 1's bit | 1           |
-| D4  | line address, 2's bit | 2           |
-| D7  | line address, 4's bit | 3           |
+| D3  | line address, 2's bit | 2           |
+| D4  | line address, 4's bit | 3           |
 | D8  | data to latch         | 13          |
 | A3  | latch enable (chip 1) | 14 (chip 1) |
 | A2  | latch enable (chip 2) | 14 (chip 2) |
