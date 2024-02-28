@@ -10,7 +10,7 @@ Skeleton code for using the 74HC259 addressable latch with Arduino. This increas
 
 ## Wiring
 
-The 74HC259 chips are 0 and 1 (if present).
+The 74HC259 chips are 0, and 1 (if present).
 
 **Arduino:**
 
