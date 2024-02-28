@@ -26,4 +26,4 @@
 | 15 | E4 | custom |
 | 16 | Vdd | +5V |
 
- \[1\] You can implement STROBE in your circuit, but this sketch does not use it.
+ \[1\] You can implement STROBE in your circuit, but stock Plexorino does not use it.
