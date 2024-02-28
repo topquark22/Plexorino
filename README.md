@@ -10,7 +10,7 @@ A design goal was to minimize the number of GPIO pins used. In particular:
 - We have left pins A4, A5 free, which are used by I2C.
 - We have left pins 5, 6, 7 free, of which 5 and 6 are PWM-capable.
 
-| module          | description             | I.C. used  | GPIO pins used     |
+| module          | use case                | I.C. used  | GPIO pins used     |
 |-----------------|-------------------------|------------|--------------------|
 | [demux](/demux) | 8-output demultiplexer  | 74HC259    | 2, 3, 4, 8, A3     |
 | [demux](/demux) | 16-output demultiplexer | 74HC259 x2 | 2, 3, 4, 8, A3, A2 |
