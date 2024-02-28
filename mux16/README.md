@@ -4,8 +4,6 @@
 
 ## 74LS150 pinout and wiring
 
-Note that we have left all of the SPI and I2C pins free.
-
 - **En**: Input signal at address n
 - custom: From your circuit
 
