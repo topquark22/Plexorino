@@ -16,3 +16,5 @@ A design goal was to minimize the number of GPIO pins used. In particular:
 | [demux](/demux) | 16-output demultiplexer | 74HC259 x2 | 2, 3, 4, 8, A3, A2 |
 | [mux8](/mux8)   | 8-to-1 multiplexer      | 74LS151    | 2, 3, 4, A0        |
 | [mux16](/mux16) | 16-to-1 multiplexer     | 74LS150    | 2, 3, 4, A0, A1    |
+
+If you like this, please sponsor my Patreon by hitting the Sponsorship button. Thank you!
