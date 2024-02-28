@@ -12,8 +12,8 @@
 | 2   | D2  | custom |
 | 3   | D1  | custom |
 | 4   | D0  | custom |
-| 5   | selected signal  | A0 |
-| 6   | selected signal (inverted)  |  |
+| 5   | multiplexed signal  | A0 |
+| 6   | multiplexed signal (inverted)  |  |
 | 7   | strobe  | GND [1] |
 | 8   | Vss  | GND |
 | 9 | addr 4's bit | D8 |
