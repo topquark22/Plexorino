@@ -10,7 +10,7 @@ At the expense of 6 output pins on the Arduino, then 16 output pins are availabl
 
 ### 8 outputs
 
-Pin A2 is assigned to control the second 74HC259 (if present.) If you only need 8 outputs, then comment out the line `#define USE_BANK2` at the top of the file. This frees up A2 to be used for something else.
+Pin A2 is assigned to control the second 74HC259 (if present.) If you only need 8 outputs, then comment out the line `#define USE_BANK2` at the top of `multiplex.ino`. This frees up A2 to be used for something else.
 
 ## Wiring
 
