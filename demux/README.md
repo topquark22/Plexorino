@@ -16,9 +16,9 @@ Note that we left all of the PWM-capable, SPI and I2C pins free.
 
 | pin | description           | 74HC259 pin |
 |-----|-----------------------|-------------|
-| D2  | line address, 1's bit | 1           |
-| D3  | line address, 2's bit | 2           |
-| D4  | line address, 4's bit | 3           |
+| D2  | address bus 0 | 1           |
+| D3  | address bus 1 | 2           |
+| D4  | address bus 2 | 3           |
 | D8  | data to latch         | 13          |
 | A3  | latch enable (chip 1) | 14 (chip 1) |
 | A2  | latch enable (chip 2) | 14 (chip 2) |
@@ -29,9 +29,9 @@ custom: Your circuit
 
 | pin | Chip | description            | wiring  |
 |-----|------|------------------------|---------|
-| 1   | both | line address, 1's bit  | D2      |
-| 2   | both | line address, 2's bit  | D3      |
-| 3   | both | line address, 4's bit  | D4      |
+| 1   | both | address bus 0  | D2      |
+| 2   | both | address bus 1  | D3      |
+| 3   | both | address bus 2  | D4      |
 | 4   | 1,2  | line 0,8 output        | custom  |
 | 5   | 1,2  | line 1,9 output        | custom  |
 | 6   | 1,2  | line 2,10 output       | custom  |
