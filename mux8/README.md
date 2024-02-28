@@ -15,7 +15,7 @@
 | 4   | E0       | custom  |
 | 5   | multiplexed signal  | A0 |
 | 6   | multiplexed signal (inverted) |  |
-| 7   | strobe  | GND \[1\] |
+| 7   | STROBE | GND \[1\] |
 | 8   | Vss     | GND |
 | 9 | address bus 2 | D4 |
 | 10 | address bus 1 | D3 |
