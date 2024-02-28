@@ -6,7 +6,7 @@ Skeleton code for using the 74HC259 addressable latch with Arduino. This provide
 
 ### 16 outputs
 
-At the expense of 6 output pins on the Arduino, then 16 output pins are available with two 74HC259 chips.
+At the expense of 6 output pins on the Arduino, 16 output pins are available with the use of two 74HC259 chips.
 
 ### 8 outputs
 
