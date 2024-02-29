@@ -16,9 +16,9 @@ const uint8_t PIN_ADDR0 = 2;       // 1's bit of line address (pin 1 of 74HG259)
 const uint8_t PIN_ADDR1 = 3;       // 2's bit of line address (pin 2 of 74HC259)
 const uint8_t PIN_ADDR2 = 4;       // 4's bit of line address (pin 3 of 74HC259)
 const uint8_t PIN_DATA = 8;     // data to latch (pin 13 of 74HC259)
-const uint8_t PIN_LATCH0 = A3; // latch enable (pin 14 of 74HC259 #1 for outputs 0-7)
+const uint8_t PIN_LATCH0 = A3; // latch enable (pin 14 of 74HC259 #0 for outputs 0-7)
 #ifdef USE_CHIP1
-const uint8_t PIN_LATCH1 = A2; // latch enable (pin 14 of 74HC259 #2 for outputs 8-15)
+const uint8_t PIN_LATCH1 = A2; // latch enable (pin 14 of 74HC259 #1 for outputs 8-15)
 #endif
 
 void writeDemux(uint16_t addr, bool value) {
