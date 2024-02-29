@@ -8,7 +8,7 @@ Plexorino brings you skeleton code for multiplexer and demultiplexer to achieve 
 
 The most limiting thing about the Arduino is its small number of GPIO pins. So, how to get around this?
 
-Plexorino takes over some of the Arduino's GPIO pins, but repays back many times over. Nothing comes for free! But, the rewards are exponential. For instance, by giving up 5 control pins to Plexorino/demux, you get back 8 outputs, for a net gain of 3 outputs. And by giving up 6 control pins, you get back a net of 10 outputs.
+Plexorino takes over some of the Arduino's GPIO pins, but repays back many times over. Nothing comes for free! But, the rewards are exponential. For instance, by giving up 5 control pins to Plexorino/demux, you get back 8 outputs, for a net gain of 3 outputs. And by giving up 6 control pins, you get back 16, for a net gain of 10 outputs.
 
 You will need to build some electronics. The parts you need are generally still available, even though some of them were introduced in the 1970s. They are multiplexer/demultiplexer chips, that you can buy on EBay or Amazon pretty easily.
 
