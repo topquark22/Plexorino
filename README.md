@@ -25,6 +25,6 @@ A design goal was to minimize the number of GPIO pins used. In particular:
 
 According to the [datasheet](doc/74LS151.pdf), the mux inputs have pull-up resistors. So you can treat them like Arduino INPUT_PULLUP pins.
 
-## Sponsorship
+# Sponsorship
 
 If you find this useful, please consider sponsoring my Patreon by hitting the Sponsorship button. Thank you!
