@@ -6,9 +6,9 @@
 #define USE_CHIP1
 
 #ifdef USE_CHIP1
-  #define NUM_LINES 16
+  #define MUX_CT 16
 #else
-  #define NUM_LINES 8
+  #define MUX_CT 8
 #endif
 
 // 74HC259 pins: (note we don't use any SPI or I2C pins)
@@ -46,7 +46,7 @@ void writeDemux(uint16_t addr, bool value) {
 
 // write bits of a value across all output lines
 void writeBitsDemux(uint16_t value) {
-  for (int addr = 0; addr < NUM_LINES; addr++) {
+  for (int addr = 0; addr < MUX_CT; addr++) {
     writeDemux(addr, (value >> addr) & 0x1);
   }
 }
@@ -79,7 +79,7 @@ void setup() {
 // blink all lines in sequence
 void testRoutine() {
   const int ms = 500;
-  for (int addr = 0; addr < NUM_LINES; addr++) {
+  for (int addr = 0; addr < MUX_CT; addr++) {
     writeDemux(addr, HIGH);
     delay(ms);
     writeDemux(addr, LOW);
