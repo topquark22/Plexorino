@@ -17,8 +17,8 @@ You will need to build some electronics. The parts you need are generally still 
 | module          | use case                | I.C. used  | GPIO pins used |
 |-----------------|-------------------------|------------|----------------|
 | [demux](/demux) | 8-output demultiplexer  | [74HC259](doc/74HC259.pdf)  | 2, 3, 4, 5, A3     |
-| [demux](/demux) | 16-output demultiplexer |  [74HC259](doc/74HC259.pdf) | 2, 3, 4, 5, A2, A3 |
-| [mux8](/mux8)   | 8-to-1 multiplexer      | (2x) [74LS151](doc/74LS151.pdf)  | 2, 3, 4, A0        |
+| [demux](/demux) | 16-output demultiplexer | (2x) [74HC259](doc/74HC259.pdf) | 2, 3, 4, 5, A2, A3 |
+| [mux8](/mux8)   | 8-to-1 multiplexer      | [74LS151](doc/74LS151.pdf)  | 2, 3, 4, A0        |
 | [mux16](/mux16) | 16-to-1 multiplexer     | [74LS150](doc/74LS151.pdf)  | 2, 3, 4, A0, A1    |
 
 ## GPIO optimization
