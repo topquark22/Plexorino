@@ -24,7 +24,7 @@ bool readMux16(uint8_t addr) {
   pinMode(PIN_ADDR1, OUTPUT);
   pinMode(PIN_ADDR2, OUTPUT);
   pinMode(PIN_ADDR3, OUTPUT);
-  // 74LS150 already has input pullups (refer to data sheet)
+  // 74LS150 does not have input pullups (refer to data sheet)
   pinMode(PIN_DATA, INPUT);
  }
 
