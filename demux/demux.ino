@@ -83,7 +83,7 @@ void testRoutine() {
     writeDemux(addr, HIGH);
     delay(ms);
     writeDemux(addr, LOW);
-    delay(ms);
+    //delay(ms);
   }
 }
 
