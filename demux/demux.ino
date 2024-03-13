@@ -11,7 +11,7 @@
   #define MUX_CT 8
 #endif
 
-// 74HC259 pins: (note we don't use any SPI or I2C pins)
+// 74HC259 pins: (note we don't lap any SPI or I2C pins, leaving them free)
 const uint8_t PIN_ADDR0 = 2;       // 1's bit of line address (pin 1 of 74HG259)
 const uint8_t PIN_ADDR1 = 3;       // 2's bit of line address (pin 2 of 74HC259)
 const uint8_t PIN_ADDR2 = 4;       // 4's bit of line address (pin 3 of 74HC259)
