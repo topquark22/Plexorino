@@ -22,7 +22,7 @@ const uint8_t PIN_DATA = A0; // from 74LS150 pin 10
 const uint8_t PIN_ECHO_OUT = 5;
 #endif
 
-// read the input at mux addr. The value is inverted
+// read the input at mux addr. The chip output comes back inverted (pin W, refer to data sheet)
 bool readMux16(muxPin_t addr) {
   digitalWrite(PIN_ADDR0, addr & 0x1);
   digitalWrite(PIN_ADDR1, (addr >> 1) & 0x1);
