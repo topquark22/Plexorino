@@ -17,11 +17,6 @@ const uint8_t PIN_ADDR3 = A1; //to 74LS150 pin 11
 // data bus
 const uint8_t PIN_MUX_DATA_ = A0; // from 74LS150 pin 10 (W, inverted)
 
-#ifdef TEST_CODE
-// echo the mux output to an Arduino pin
-const uint8_t PIN_ECHO_OUT = 5;
-#endif
-
 // read the input at mux addr. The chip output comes back inverted (pin W, refer to data sheet)
 bool readMux16(muxPin_t addr) {
   digitalWrite(PIN_ADDR0, addr & 0x1);
@@ -50,10 +45,7 @@ muxPin_t muxPin = 0; // default E0
   // put your setup code here, to run once
 
 #ifdef TEST_CODE
-  pinMode(PIN_ECHO_OUT, OUTPUT);
   Serial.begin(9600);
-  Serial.print(F("Enter mux pin to test, default "));
-  Serial.println(muxPin);
 #endif
 }
 
@@ -61,12 +53,13 @@ void loop() {
   // put your main code here, to run repeatedly
 
 #ifdef TEST_CODE
-  if (Serial.available()) {
-    muxPin = Serial.readString().toInt();
-    Serial.print(F("Testing pin "));
-    Serial.println(muxPin);
-    Serial.println(F("Enter next pin to test:"));
+  for (muxPin_t addr = 0; addr < 16; addr++) {
+     Serial.print(addr, HEX);
+    Serial.print(F(":"));
+    Serial.print(readMux16(addr) ? F("HIGH ") : F("LOW  "));
   }
-  digitalWrite(PIN_ECHO_OUT, readMux16(muxPin));
+  Serial.println();
+  delay(1000);
+
 #endif TEST_CODE
 }
