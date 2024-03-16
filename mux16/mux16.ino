@@ -37,14 +37,25 @@ const uint8_t PIN_TEST = 5;
   // put your setup code here, to run once
 
   // TEST CODE
+
   pinMode(PIN_TEST, OUTPUT);
+  Serial.begin(9600);
+  Serial.println(F("Enter pin to test (default 0):"));
 }
+
+// TEST CODE
+int pin = 0;
 
 void loop() {
   // put your main code here, to run repeatedly
 
   // TEST CODE
-  // use mux input E0 (pin 8 on 74LS150)
-  digitalWrite(PIN_TEST, readMux16(0));
+  if (Serial.available()) {
+    pin = Serial.readString().toInt();
+    Serial.print(F("Testing pin "));
+    Serial.println(pin);
+    Serial.println(F("Enter next pin to test:"));
+  }
+  digitalWrite(PIN_TEST, readMux16(pin));
 
 }
