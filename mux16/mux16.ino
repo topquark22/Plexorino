@@ -5,7 +5,7 @@
 // This file contains skeleton code for your own projects. Remove this to implement your own use case
 #define TEST_CODE
 
-// pins on the 74LS150 are numbered E0-E15
+// input pins on the 74LS150 are numbered E0-E15
 typedef uint8_t muxPin_t;
 
 // address bus
@@ -40,7 +40,6 @@ bool readMux16(muxPin_t addr) {
  }
 
 #ifdef TEST_CODE
-// 74LS150 inputs are labelled E0-E15
 muxPin_t muxPin = 0; // default E0
 #endif
 
