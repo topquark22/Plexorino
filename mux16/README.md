@@ -35,3 +35,7 @@
 | 24 | Vdd | +5V |
 
  \[1\] You can implement STROBE in your circuit, but the stock Plexorino does not use it.
+
+ ## Testing
+
+ ![test circuit](mux16_test.jpg)
