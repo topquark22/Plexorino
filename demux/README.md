@@ -25,7 +25,7 @@ The 74HC259 chips are 0, and 1 (if present).
 
 **74HC259:**
 
-- custom: To your circuit, accodring to your use case.
+- custom: To your circuit, according to your use case.
 
 | pin | Chip | description      | wiring  |
 |-----|------|------------------|---------|
