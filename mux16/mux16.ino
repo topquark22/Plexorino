@@ -50,6 +50,7 @@ void loop() {
 
 #ifdef TEST_CODE
   for (muxPin_t addr = 0; addr < 16; addr++) {
+    Serial.print(F("E"));
     Serial.print(addr);
     Serial.print(F(":"));
     Serial.print(readMux16(addr) ? F("HIGH ") : F("LOW  "));
