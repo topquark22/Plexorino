@@ -15,7 +15,7 @@ const uint8_t PIN_ADDR2 = 4; // to 74LS150 pin 13
 const uint8_t PIN_ADDR3 = A1; //to 74LS150 pin 11
 
 // data bus
-const uint8_t PIN_DATA_ = A0; // from 74LS150 pin 10 (W, inverted)
+const uint8_t PIN_MUX_DATA_ = A0; // from 74LS150 pin 10 (W, inverted)
 
 #ifdef TEST_CODE
 // echo the mux output to an Arduino pin
@@ -28,7 +28,7 @@ bool readMux16(muxPin_t addr) {
   digitalWrite(PIN_ADDR1, (addr >> 1) & 0x1);
   digitalWrite(PIN_ADDR2, (addr >> 2) & 0x1);
   digitalWrite(PIN_ADDR3, (addr >> 3) & 0x1);
-  return !digitalRead(PIN_DATA_);
+  return !digitalRead(PIN_MUX_DATA_);
 }
 
  void setup_mux16() {
@@ -37,7 +37,7 @@ bool readMux16(muxPin_t addr) {
   pinMode(PIN_ADDR2, OUTPUT);
   pinMode(PIN_ADDR3, OUTPUT);
   // 74LS150 does not have input pullups (refer to data sheet)
-  pinMode(PIN_DATA_, INPUT);
+  pinMode(PIN_MUX_DATA_, INPUT);
  }
 
 #ifdef TEST_CODE
