@@ -5,9 +5,9 @@
 ## 74LS150 pinout and wiring
 
 - **En**: Input signal at address n
-- custom: From your circuit
+- custom: Per your use case
 
-| pin | function | wire to |
+| pin | function |  wire to | 
 |-----|----------|---------|
 | 1   | E7  | custom |
 | 2   | E6  | custom |
