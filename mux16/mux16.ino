@@ -28,14 +28,23 @@ bool readMux16(uint8_t addr) {
   pinMode(PIN_DATA, INPUT);
  }
 
+// TEST CODE
+const uint8_t PIN_TEST = 5;
+
  void setup() {
   setup_mux16();
 
   // put your setup code here, to run once
-  
+
+  // TEST CODE
+  pinMode(PIN_TEST, OUTPUT);
 }
 
 void loop() {
   // put your main code here, to run repeatedly
+
+  // TEST CODE
+  // use mux input E0 (pin 8 on 74LS150)
+  digitalWrite(PIN_TEST, readMux16(0));
 
 }
