@@ -35,10 +35,6 @@ bool readMux16(muxPin_t addr) {
   pinMode(PIN_MUX_DATA_, INPUT);
  }
 
-#ifdef TEST_CODE
-muxPin_t muxPin = 0; // default E0
-#endif
-
  void setup() {
   setup_mux16();
 
@@ -54,12 +50,11 @@ void loop() {
 
 #ifdef TEST_CODE
   for (muxPin_t addr = 0; addr < 16; addr++) {
-     Serial.print(addr, HEX);
+    Serial.print(addr);
     Serial.print(F(":"));
     Serial.print(readMux16(addr) ? F("HIGH ") : F("LOW  "));
   }
   Serial.println();
   delay(1000);
-
 #endif TEST_CODE
 }
