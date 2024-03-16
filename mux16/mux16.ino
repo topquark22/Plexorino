@@ -2,19 +2,20 @@
  * Interface to 74LS150 16-to-1 multiplexer chip
  */
 
-// This file contains skeleton code for your own projects. Remove this to implement your own use case
+// This file contains skeleton code for your own projects. Remove this stuff to implement your own use case
 #define TEST_CODE
 
 // address bus
-const uint8_t PIN_ADDR0 = 2; // mux pin 15
-const uint8_t PIN_ADDR1 = 3; // mux pin 14
-const uint8_t PIN_ADDR2 = 4; // mux pin 13
-const uint8_t PIN_ADDR3 = A1; //mux pin 11
+const uint8_t PIN_ADDR0 = 2; // to 74LS150 pin 15
+const uint8_t PIN_ADDR1 = 3; // to 74LS150 pin 14
+const uint8_t PIN_ADDR2 = 4; // to 74LS150 pin 13
+const uint8_t PIN_ADDR3 = A1; //to 74LS150 pin 11
 // data bus
-const uint8_t PIN_DATA = A0; // mux pin 10
+const uint8_t PIN_DATA = A0; // to 74LS150 pin 10
 
 #ifdef TEST_CODE
-const uint8_t PIN_TEST = 5;
+// echo the mux output to an Arduino pin
+const uint8_t PIN_ECHO_OUT = 5;
 #endif
 
 // read the input at mux addr. The value is inverted
@@ -36,7 +37,8 @@ bool readMux16(uint8_t addr) {
  }
 
 #ifdef TEST_CODE
-int muxPin = 0;
+// 74LS150 inputs are labelled E0-E15
+int muxPin = 0; // default E0
 #endif
 
  void setup() {
@@ -45,7 +47,7 @@ int muxPin = 0;
   // put your setup code here, to run once
 
 #ifdef TEST_CODE
-  pinMode(PIN_TEST, OUTPUT);
+  pinMode(PIN_ECHO_OUT, OUTPUT);
   Serial.begin(9600);
   Serial.print(F("Enter mux pin to test, default "));
   Serial.println(muxPin);
@@ -62,6 +64,6 @@ void loop() {
     Serial.println(muxPin);
     Serial.println(F("Enter next pin to test:"));
   }
-  digitalWrite(PIN_TEST, readMux16(muxPin));
+  digitalWrite(PIN_ECHO_OUT, readMux16(muxPin));
 #endif TEST_CODE
 }
