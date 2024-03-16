@@ -5,7 +5,7 @@
 ## 74LS150 pinout and wiring
 
 - **En**: Input signal at address n
-- custom: Per your use case
+- custom: Per your use case. Include external pullup resistors if required.
 
 | pin | function |  wire to | 
 |-----|----------|---------|
@@ -38,4 +38,4 @@
 
  ## Testing
 
- ![test circuit](mux16_test.jpg)
+Leave `#define TEST_CODE` uncommented. You will see output giving the logic level of each pin at 1-second intervals.
