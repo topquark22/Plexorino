@@ -28,8 +28,9 @@ bool readMux16(uint8_t addr) {
   pinMode(PIN_DATA, INPUT);
  }
 
-// TEST CODE
-const uint8_t PIN_TEST = 5;
+const uint8_t PIN_TEST = 5; // TEST CODE
+
+int muxPin = 0; // TEST CODE
 
  void setup() {
   setup_mux16();
@@ -37,25 +38,21 @@ const uint8_t PIN_TEST = 5;
   // put your setup code here, to run once
 
   // TEST CODE
-
   pinMode(PIN_TEST, OUTPUT);
   Serial.begin(9600);
   Serial.println(F("Enter pin to test (default 0):"));
 }
-
-// TEST CODE
-int pin = 0;
 
 void loop() {
   // put your main code here, to run repeatedly
 
   // TEST CODE
   if (Serial.available()) {
-    pin = Serial.readString().toInt();
+    muxPin = Serial.readString().toInt();
     Serial.print(F("Testing pin "));
-    Serial.println(pin);
+    Serial.println(muxPin);
     Serial.println(F("Enter next pin to test:"));
   }
-  digitalWrite(PIN_TEST, readMux16(pin));
+  digitalWrite(PIN_TEST, readMux16(muxPin));
 
 }
