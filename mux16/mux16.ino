@@ -47,7 +47,8 @@ int muxPin = 0;
 #ifdef TEST_CODE
   pinMode(PIN_TEST, OUTPUT);
   Serial.begin(9600);
-  Serial.println(F("Enter pin to test (default 0):"));
+  Serial.print(F("Enter mux pin to test, default "));
+  Serial.println(muxPin);
 #endif
 }
 
