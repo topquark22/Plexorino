@@ -6,7 +6,7 @@
 #define TEST_CODE
 
 // pins on the 74LS150 are numbered E0-E15
-typedef uint8_t muxInputPin_t;
+typedef uint8_t muxPin_t;
 
 // address bus
 const uint8_t PIN_ADDR0 = 2; // to 74LS150 pin 15
@@ -22,7 +22,7 @@ const uint8_t PIN_ECHO_OUT = 5;
 #endif
 
 // read the input at mux addr. The value is inverted
-bool readMux16(muxInputPin_t addr) {
+bool readMux16(muxPin_t addr) {
   digitalWrite(PIN_ADDR0, addr & 0x1);
   digitalWrite(PIN_ADDR1, (addr >> 1) & 0x1);
   digitalWrite(PIN_ADDR2, (addr >> 2) & 0x1);
@@ -41,7 +41,7 @@ bool readMux16(muxInputPin_t addr) {
 
 #ifdef TEST_CODE
 // 74LS150 inputs are labelled E0-E15
-muxInputPin_t muxPin = 0; // default E0
+muxPin_t muxPin = 0; // default E0
 #endif
 
  void setup() {
