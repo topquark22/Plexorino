@@ -13,8 +13,9 @@ const uint8_t PIN_ADDR0 = 2; // to 74LS150 pin 15
 const uint8_t PIN_ADDR1 = 3; // to 74LS150 pin 14
 const uint8_t PIN_ADDR2 = 4; // to 74LS150 pin 13
 const uint8_t PIN_ADDR3 = A1; //to 74LS150 pin 11
+
 // data bus
-const uint8_t PIN_DATA = A0; // to 74LS150 pin 10
+const uint8_t PIN_DATA = A0; // from 74LS150 pin 10
 
 #ifdef TEST_CODE
 // echo the mux output to an Arduino pin
