@@ -1,8 +1,10 @@
 /**
  * Interface to 74LS150 16-to-1 multiplexer chip
+ *
+ * This file contains skeleton code for use in your own projects.
  */
 
-// This file contains skeleton code for your own projects. Remove this to implement your own use case
+// Remove test code to implement your own use case
 #define TEST_CODE
 
 // input pins on the 74LS150 are numbered E0-E15
