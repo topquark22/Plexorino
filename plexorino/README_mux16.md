@@ -9,7 +9,7 @@ Uncomment `#define MUX16` in `plexorino.h`.
 - **En**: Input signal at address n
 - custom: Per your use case. Include external pullup resistors if required.
 
-| 74LS150 pin | mode | function |  wire to | 
+| 74LS150 pin | mode | description |  wire to | 
 |-----|-------|-----|---------|
 | 1   | input | E7  | custom |
 | 2   | input | E6  | custom |
@@ -20,12 +20,12 @@ Uncomment `#define MUX16` in `plexorino.h`.
 | 7   | input | E1  | custom |
 | 8   | input | E0  | custom |
 | 9   | input | STROBE | GND \[1\] |
-| 10 | output | multiplexed signal (inverted) | A0 |
-| 11 | input | address bus 3 | A1 |
+| 10 | output | multiplexed signal (inverted) | Arduino A0 |
+| 11 | input | address bus 3 | Arduino A1 |
 | 12 |power | Vss | GND |
-| 13 | input | address bus 2 | D4 |
-| 14 | input | address bus 1 | D3 |
-| 15 | input | address bus 0 | D2 |
+| 13 | input | address bus 2 | Arduino D4 |
+| 14 | input | address bus 1 | Arduino D3 |
+| 15 | input | address bus 0 | Arduino D2 |
 | 16 | input | E15 | custom |
 | 17 | input | E14 | custom | 
 | 18 |input |  E13 | custom | 
