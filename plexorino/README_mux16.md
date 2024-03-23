@@ -2,6 +2,8 @@
 
 16-line multiplexer for input to Arduino.
 
+Uncomment `#define MUX16` in `plexorino.h`.
+
 ## 74LS150 pinout and wiring
 
 - **En**: Input signal at address n
