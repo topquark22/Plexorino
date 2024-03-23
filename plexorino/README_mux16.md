@@ -20,7 +20,7 @@ Uncomment `#define MUX16` in `plexorino.h`.
 | 7   | input E1 | custom |
 | 8   | input E0 | custom |
 | 9   | input STROBE | GND \[1\] |
-| 10 | multiplexed signal (inverted) | Arduino A0 |
+| 10 | multiplexed output (inverted) | Arduino A0 |
 | 11 | address bus 3 | Arduino A1 |
 | 12 | Vss | GND |
 | 13 | address bus 2 | Arduino D4 |
