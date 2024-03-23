@@ -6,7 +6,7 @@ Comment out `#define MUX16` in `plexorino.h`.
 
 ## 74LS151 pinout and wiring
 
-*Note: Output wiring has changed on this branch. In the library we use the inverted 74LS151 output on pin 6, instead of the straight output on pin 5 as before. This is for code consistency with the 16-bit case with the 74LS150.*
+*Note: Output wiring has changed on this branch. We now use the inverted 74LS151 output on pin 6, instead of the straight output on pin 5 as before. This is for code consistency with the 16-bit case with the 74LS150.*
 
 - **En**: Input signal at mux address n
 - custom: From your circuit, according to your use case. Include external pullup resistors if required.
