@@ -1,5 +1,5 @@
 /**
- * Interface to 74HC259 multiplex latch
+ * Interface to 74HC259 8-bit addressable latch, 74LS151 8-bit multiplexer, 74LS150 16-bit multiplexer
  */
 
 #ifndef PLEXORINO_H
@@ -33,7 +33,7 @@
 typedef uint8_t muxAddr_t;
 
 // 74HC259 pins: (note we don't lap any SPI or I2C pins, leaving them free)
-const PROGMEM uint8_t PIN_ADDR0 = 2;       // 1's bit of mux/demux address (pin 1 of 74HG259; pin 11 of 74LS151; pin 15 of 74LS150)
+const PROGMEM uint8_t PIN_ADDR0 = 2;       // 1's bit of mux/demux address (pin 1 of 74HC259; pin 11 of 74LS151; pin 15 of 74LS150)
 const PROGMEM uint8_t PIN_ADDR1 = 3;       // 2's bit of mux/demux address (pin 2 of 74HC259; pin 10 of 74LS151; pin 14 of 74LS150)
 const PROGMEM uint8_t PIN_ADDR2 = 4;       // 4's bit of mux/demux address (pin 3 of 74HC259; pin 9 of 74LS151; pin 13 of 74LS150)
 #ifdef MUX16
