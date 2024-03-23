@@ -2,8 +2,6 @@
 
 8-line multiplexer for input to Arduino.
 
-*Note: Output wiring has changed on this branch. In the library we use the inverted muxer output on pin 6, instead of the straight output on pin 5 as before. This is for code consistency with the 16-bit case with the 74LS150.*
-
 ## 74LS151 pinout and wiring
 
 - **En**: Input signal at address n
