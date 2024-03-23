@@ -13,8 +13,8 @@
 | 2   | E2       | custom  |
 | 3   | E1       | custom  |
 | 4   | E0       | custom  |
-| 5   | multiplexed signal  | A0 |
-| 6   | multiplexed signal (inverted) |  |
+| 5   | multiplexed signal  | |
+| 6   | multiplexed signal (inverted) | A0 |
 | 7   | STROBE | GND \[1\] |
 | 8   | Vss     | GND |
 | 9 | address bus 2 | D4 |
