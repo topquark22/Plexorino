@@ -12,7 +12,7 @@ Comment out `#define MUX16` in `plexorino.h`.
 - custom: From your circuit, according to your use case
 
 | 74LS151 pin | mode | description | wire to |
-|-----|----------|---------|
+|-----|-------|---|---------|
 | 1   | input | E3       | custom  |
 | 2   | input | E2       | custom  |
 | 3   | input | E1       | custom  |
