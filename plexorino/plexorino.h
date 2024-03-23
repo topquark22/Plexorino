@@ -2,14 +2,17 @@
  * Interface to 74HC259 multiplex latch
  */
 
-#ifndef P_H
-#define P_H
+#ifndef PLEXORINO_H
+#define PLEXORINO_H
 
 #include <Arduino.h>
 
-// remove this if your mux use case is 8-input
+// Comment this if your mux use case is 8-input (74LS151)
+// Leave uncommented if your use case is 16-input (74LS150)
 #define MUX16
-// remove this if your demux use-case is 8-output
+
+// Comment this if your demux use-case is 8-output (1x 74HC259)
+// Leave uncommented if your use case is 18-output (2x 74HC259)
 #define DEMUX16
 
 #ifdef MUX16
@@ -17,7 +20,6 @@
 #else
   #define MUX_CT 8
 #endif
-
 
 #ifdef DEMUX16
   #define DEMUX_CT 16
@@ -27,10 +29,8 @@
 
 // input pins on the 74LS151 are numbered E0-E7
 // input pins on the 74LS150 are numbered E0-E15
-typedef uint8_t muxAddr_t;
-
 // output pins on the 74HC259 are numbered D0-D7
-typedef uint8_t demuxAddr_t;
+typedef uint8_t muxAddr_t;
 
 // 74HC259 pins: (note we don't lap any SPI or I2C pins, leaving them free)
 const PROGMEM uint8_t PIN_ADDR0 = 2;       // 1's bit of mux/demux address (pin 1 of 74HG259; pin 11 of 74LS151; pin 15 of 74LS150)
@@ -49,7 +49,7 @@ const PROGMEM uint8_t PIN_LATCH1 = A2; // latch enable for outputs 8-15 (pin 14 
 
 bool readMux(muxAddr_t addr);
 
-void writeDemux(demuxAddr_t addr, bool value);
+void writeDemux(muxAddr_t addr, bool value);
 
 // write bits of a value across all output lines
 void writeBitsDemux(uint16_t bits);
@@ -61,4 +61,4 @@ void setupDemux();
 
 void setupMux();
 
-#endif  // P_H
+#endif  // PLEXORINO_H

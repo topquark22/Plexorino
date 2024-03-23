@@ -16,6 +16,12 @@ void setup() {
 }
 
 void loop() {
+  for (muxAddr_t addr = 0; addr < MUX_CT; addr++) {
+    writeDemux(addr, readMux(addr));
+  }
+}
+/*
+void loop() {
   // put your main code here, to run repeatedly
 
 // mux test routine
@@ -29,3 +35,4 @@ void loop() {
   delay(1000);
 
 }
+*/

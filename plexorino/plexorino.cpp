@@ -5,7 +5,7 @@
 //#include <Arduino.h>
 #include "plexorino.h"
 
-void writeDemux(demuxAddr_t addr, bool value) {
+void writeDemux(muxAddr_t addr, bool value) {
   digitalWrite(PIN_ADDR0, addr & 0x1);
   digitalWrite(PIN_ADDR1, (addr & 0x2) >> 1);
   digitalWrite(PIN_ADDR2, (addr & 0x4) >> 2);
@@ -40,7 +40,7 @@ bool readMux(muxAddr_t addr) {
 }
 
 void writeBitsDemux(uint16_t bits) {
-  for (demuxAddr_t addr = 0; addr < DEMUX_CT; addr++) {
+  for (muxAddr_t addr = 0; addr < DEMUX_CT; addr++) {
     writeDemux(addr, (bits >> addr) & 0x1);
   }
 }
