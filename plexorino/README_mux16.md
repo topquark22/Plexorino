@@ -37,7 +37,3 @@ Uncomment `#define MUX16` in `plexorino.h`.
 | 24 | Vdd | +5V |
 
  \[1\] You can implement STROBE in your circuit, but the stock Plexorino does not use it.
-
- ## Testing
-
-Leave `#define TEST_CODE` uncommented. You will see output giving the logic level of each pin at 1-second intervals.
