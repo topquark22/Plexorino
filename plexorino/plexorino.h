@@ -42,9 +42,9 @@ const PROGMEM uint8_t PIN_ADDR3 = A1;      // 8's bit of mux address (pin 11 of 
 const PROGMEM uint8_t PIN_MUX_DATA_ = A0;  // inverted data from mux (pin 6 of 74LS151; pin 10 of 74LS150)
 
 const PROGMEM uint8_t PIN_DEMUX_DATA = 5;  // data to demux (pin 13 of 74HC259)
-const uint8_t PIN_LATCH0 = A3; // latch enable (pin 14 of 74HC259 #0 for outputs 0-7)
+const PROGMEM uint8_t PIN_LATCH0 = A3; // latch enable for outputs 0-7 (pin 14 of 74HC259 #0)
 #ifdef DEMUX16
-const PROGMEM uint8_t PIN_LATCH1 = A2; // latch enable (pin 14 of 74HC259 #1 for outputs 8-15)
+const PROGMEM uint8_t PIN_LATCH1 = A2; // latch enable for outputs 8-15 (pin 14 of 74HC259 #1)
 #endif
 
 bool readMux(muxAddr_t addr);
