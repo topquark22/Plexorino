@@ -6,8 +6,8 @@ Uncomment `#define MUX16` in `plexorino.h`.
 
 ## 74LS150 pinout and wiring
 
-- **En**: Input signal n
-- custom: Per your use case. Include external pullup resistors if required.
+- **En**: Input signal n. Include external pullup resistors if required.
+- custom: Per your use case.
 
 | pin | description |  wire to | 
 |-----|-------------|---------|
