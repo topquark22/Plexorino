@@ -12,7 +12,7 @@
 #define MUX16
 
 // Comment this if your demux use-case is 8-output (1x 74HC259)
-// Leave uncommented if your use case is 18-output (2x 74HC259)
+// Leave uncommented if your use case is 16-output (2x 74HC259)
 #define DEMUX16
 
 #ifdef MUX16
