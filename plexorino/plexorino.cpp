@@ -1,8 +1,9 @@
 /**
- * Interface to 74HC259 multiplex latch
+ * Interface to:
+ *   74HC259 8-output addressable latch (demultiplexer)
+ *   74LS151 8-input multiplexer
+ *   74LS150 16-input multiplexer
  */
-
-//#include <Arduino.h>
 #include "plexorino.h"
 
 void writeDemux(muxAddr_t addr, bool value) {
