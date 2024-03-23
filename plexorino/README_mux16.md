@@ -11,29 +11,29 @@ Uncomment `#define MUX16` in `plexorino.h`.
 
 | pin | description |  wire to | 
 |-----|-------------|---------|
-| 1   | E7 input | custom |
-| 2   | E6 input | custom |
-| 3   | E5 input | custom |
-| 4   | E4 input | custom |
-| 5   | E3 input | custom |
-| 6   | E2 input | custom |
-| 7   | E1 input | custom |
-| 8   | E0 input | custom |
-| 9   | STROBE | GND \[1\] |
+| 1   | input E7 | custom |
+| 2   | input E6 | custom |
+| 3   | input E5 | custom |
+| 4   | input E4 | custom |
+| 5   | input E3 | custom |
+| 6   | input E2 | custom |
+| 7   | input E1 | custom |
+| 8   | inputE0  | custom |
+| 9   | input STROBE | GND \[1\] |
 | 10 | multiplexed signal (inverted) | Arduino A0 |
 | 11 | address bus 3 | Arduino A1 |
 | 12 | Vss | GND |
 | 13 | address bus 2 | Arduino D4 |
 | 14 | address bus 1 | Arduino D3 |
 | 15 | address bus 0 | Arduino D2 |
-| 16 | E15 input | custom |
-| 17 | E14 input | custom | 
-| 18 | E13 input | custom | 
-| 19 | E12 input | custom | 
-| 20 | E11 input | custom |
-| 21 | E10 input | custom |
-| 22 | E9 input  | custom |
-| 23 | E8 input | custom |
+| 16 | input E15 | custom |
+| 17 | input E14 | custom | 
+| 18 | input E13 | custom | 
+| 19 | input E12 | custom | 
+| 20 | input E11 | custom |
+| 21 | input E10 | custom |
+| 22 | input E9  | custom |
+| 23 | input E8  | custom |
 | 24 | Vdd | +5V |
 
  \[1\] You can implement STROBE in your circuit, but the stock Plexorino does not use it.
