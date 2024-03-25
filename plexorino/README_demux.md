@@ -14,14 +14,14 @@ The 74HC259 chips are 0, and 1 (if present).
 
 **Arduino:**
 
-| pin | description              | Chip | pin  |
-|-----|--------------------------|------|------|
-| D2  | address bus 0            | both | 1    |
-| D3  | address bus 1            | both | 2    |
-| D4  | address bus 2            | both | 3    |
-| D5  | data                     | both | 13   |
-| A3  | latch enable (addr 0-7)  | 0    | 14   |
-| A2  | latch enable (addr 8-15) | 1    | 14   |
+| pin | description              | Chip | 74HC259 pin  |
+|-----|--------------------------|------|--------------|
+| D2  | address bus 0            | both | 1            |
+| D3  | address bus 1            | both | 2            |
+| D4  | address bus 2            | both | 3            |
+| D5  | data                     | both | 13           |
+| A3  | latch enable (addr 0-7)  | 0    | 14           |
+| A2  | latch enable (addr 8-15) | 1    | 14           |
 
 **74HC259:**
 
