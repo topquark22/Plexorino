@@ -17,7 +17,7 @@ void setup() {
 
 void loop() {
   for (muxAddr_t addr = 0; addr < MUX_CT; addr++) {
-    writeDemux(addr, readMux(addr));
+    writeDemux(addr % DEMUX_CT, readMux(addr));
   }
 }
 /*
