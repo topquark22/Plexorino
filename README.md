@@ -4,7 +4,7 @@ With additional hardware, we can expand the number of digital input/output pins 
 
 Plexorino brings you skeleton code for multiplexer and demultiplexer to achieve this. Take this logic and use it in your own circuit project.
 
-Note: This is a library. The file **plexorino.ino** contains test cases and is just there to enable compilation.
+Note: This is a library. The file **plexorino.ino** contains test cases only.
 
 ## Introduction
 
@@ -29,7 +29,7 @@ A design goal was to minimize the number of GPIO pins used. In particular:
 
 - We have left pins 9-13 free, which are used by SPI.
 - We have left pins A4, A5 free, which are used by I2C.
-- We have left pins 6, 7, 8 free, and pin 6 is PWM-capable.
+- We have left pins 6, 7, 8 free, of which pin 6 is PWM-capable.
 
 ## Pull-up inputs
 
