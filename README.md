@@ -30,7 +30,3 @@ A design goal was to minimize the number of GPIO pins used. In particular:
 - We have left pins 9-13 free, which are used by SPI.
 - We have left pins A4, A5 free, which are used by I2C.
 - We have left pins 6, 7, 8 free, of which pin 6 is PWM-capable.
-
-## Pull-up inputs
-
-According to the [datasheet](doc/74LS151.pdf), the mux inputs do not have pull-up resistors. So if you intend to use them as equivalent to Arduino INPUT_PULLUP pins, put a 10K resistor between the mux input and +5V.
