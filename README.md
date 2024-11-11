@@ -4,6 +4,8 @@ With additional hardware, we can expand the number of digital input/output pins 
 
 Plexorino brings you skeleton code for multiplexer and demultiplexer to achieve this. Take this logic and use it in your own circuit project.
 
+Note: This is a library. The file **plexorino.ino** contains test cases and is just there to enable compilation.
+
 ## Introduction
 
 The most limiting thing about the Arduino is its small number of GPIO pins. So, how to get around this?
