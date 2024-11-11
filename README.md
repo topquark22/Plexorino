@@ -34,7 +34,3 @@ A design goal was to minimize the number of GPIO pins used. In particular:
 ## Pull-up inputs
 
 According to the [datasheet](doc/74LS151.pdf), the mux inputs do not have pull-up resistors. So if you intend to use them as equivalent to Arduino INPUT_PULLUP pins, put a 10K resistor between the mux input and +5V.
-
-# Sponsorship
-
-If you find this useful, please consider sponsoring my Patreon by hitting the Sponsorship button. Thank you!
