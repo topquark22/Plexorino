@@ -35,7 +35,7 @@ A design goal was to minimize the number of GPIO pins used. In particular:
 
 This example simply breaks out the 16 inputs and outputs, to connect to a breadboard circuit. The inputs are green, and the outputs are blue.
 
-The SPI and I2C bus are also exposed on the yellow sockets, and pins 6, 7, 8, A0, A1 directly on the Arduino, which weren't used for anything else.
+The SPI and I2C bus are also exposed on the yellow sockets, and pins 6, 7, 8 directly on the Arduino, which weren't used for anything else.
 
 *(Correction: 74LS259 should be 74HC259)*
 
