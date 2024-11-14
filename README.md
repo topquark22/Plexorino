@@ -31,7 +31,7 @@ A design goal was to minimize the number of GPIO pins used. In particular:
 - We have left pins A4, A5 free, which are used by I2C.
 - We have left pins 6, 7, 8 free, of which pin 6 is PWM-capable.
 
-## Example use cases
+## Basic setup
 
 This example simply breaks out the 16 inputs and outputs, to connect to a breadboard circuit. The inputs are green, and the outputs are blue.
 
