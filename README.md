@@ -37,4 +37,6 @@ This example simply breaks out the 16 inputs and outputs, to connect to a breadb
 
 The SPI and I2C bus are also exposed on the yellow sockets, and pins 6, 7, 8 directly on the Arduino, which weren't used for anything else.
 
+*(Correction: 74LS259 should be 74HC259)*
+
 ![Plexorino](plex-16-16.jpg)
