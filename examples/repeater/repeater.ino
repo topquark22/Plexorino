@@ -5,7 +5,7 @@
  *   74HC259 8-bit demultiplexer chip
  */
 
-#include "plexorino.h"
+#include <plexorino.h>
 
 void setup() {
   setupDemux();
