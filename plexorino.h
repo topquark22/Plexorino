@@ -7,9 +7,13 @@
 
 #include <Arduino.h>
 
-// Comment this if your mux use case is 8-input (74LS151)
-// Leave uncommented if your use case is 16-input (74LS150)
-#define MUX16
+// If your mux use case is 8-input (74LS151) only and you want to use pin A1
+// for something else, then define MUX8_ONLY at compile time. But in any case,
+// it will still work; you just won't be able to use pin A1 for anything else
+// because it will be dedicated to address line 3 for the 74LS150.
+#ifndef MUX8_ONLY
+  #define MUX16
+#endif
 
 // Comment this if your demux use-case is 8-output (1x 74HC259)
 // Leave uncommented if your use case is 16-output (2x 74HC259)
