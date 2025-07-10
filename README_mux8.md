@@ -4,7 +4,7 @@
 
 ## 8-bit vs. 16-but mux
 
-If your use case is 8-input (74LS151) only and you need to use pin A1 for something else, then define MUX8_ONLY at compile time. But in any case, it will still work; you just won't be able to use pin A1 for anything else because it will be dedicated to address line 3 for the 74LS150 (MUX16) use case.
+If your use case is 8-input (74LS151) only and you need to use pin A1 for something else, then define `MUX8_ONLY` at compile time. But in any case, it will still work; you just won't be able to use pin A1 for anything else because it will be dedicated to address line 3 for the 74LS150 (MUX16) use case.
 
 ## 74LS151 pinout and wiring
 
