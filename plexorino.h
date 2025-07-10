@@ -15,10 +15,10 @@
   #define MUX16
 #endif
 
-// If your demux use case is 8-output (1x 74HC259), then define DEMUX8_ONLY
-// at compile time. This will free up pin A2 to use for something else.
-// Otherwise it will still work; you will just not be able to use A2
-// for anything else.
+// If your demux use case is 8-output (1x 74HC259) and you want to use A2
+// for something else, then define DEMUX8_ONLY at compile time. This will
+// free up pin A2. Otherwise it will still work; you will just not be able
+// to use A2 for anything else.
 #ifndef DEMUX8_ONLY
   #define DEMUX16
 #endif
