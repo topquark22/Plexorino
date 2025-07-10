@@ -15,7 +15,7 @@
   #define MUX16
 #endif
 
-// If your use case is 8-output (1x 74HC259), then define `DEMUX8_ONLY`
+// If your demux use case is 8-output (1x 74HC259), then define DEMUX8_ONLY
 // at compile time. This will free up pin A2 to use for something else.
 // Otherwise it will still work; you will just not be able to use A2
 // for anything else.
@@ -37,7 +37,8 @@
 
 // input pins on the 74LS151 are numbered E0-E7
 // input pins on the 74LS150 are numbered E0-E15
-// output pins on the 74HC259 are numbered D0-D7
+// output pins on the 74HC259 chip #0 are numbered D0-D7
+// output pins on the 74HC259 chip #1 are numbered D8-D15
 typedef uint8_t muxAddr_t;
 
 // 74HC259 pins: (note we don't lap any SPI or I2C pins, leaving them free)
