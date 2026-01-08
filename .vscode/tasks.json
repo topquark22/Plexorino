@@ -7,9 +7,11 @@
 			"command": "${env:ARDUINO_CLI}",
 			"args": [
 				"compile",
+				"--libraries",
+				"${workspaceFolder}",
 				"--fqbn",
 				"${input:fqbn}",
-				"examples/${input:example}"
+				"examples/repeater/repeater.ino"
 			],
 			"group": {
 				"kind": "build",
@@ -88,7 +90,7 @@
 			"id": "port",
 			"type": "promptString",
 			"description": "Serial port (eg: COM3 or /dev/ttyUSB0)",
-			"default": "COM7
+			"default": "COM3"
 		},
 		{
 			"id": "baud",
