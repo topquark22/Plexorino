@@ -41,19 +41,19 @@
 // output pins on the 74HC259 chip #1 are numbered D8-D15
 typedef uint8_t muxAddr_t;
 
-// 74HC259 pins: (note we don't lap any SPI or I2C pins, leaving them free)
-const PROGMEM uint8_t PIN_ADDR0 = 2;       // 1's bit of mux/demux address (pin 1 of 74HC259; pin 11 of 74LS151; pin 15 of 74LS150)
-const PROGMEM uint8_t PIN_ADDR1 = 3;       // 2's bit of mux/demux address (pin 2 of 74HC259; pin 10 of 74LS151; pin 14 of 74LS150)
-const PROGMEM uint8_t PIN_ADDR2 = 4;       // 4's bit of mux/demux address (pin 3 of 74HC259; pin 9 of 74LS151; pin 13 of 74LS150)
+// 74HC259 pins: (note we don't use any SPI or I2C pins, leaving them free)
+constexpr uint8_t PIN_ADDR0 = 2;       // 1's bit of mux/demux address (pin 1 of 74HC259; pin 11 of 74LS151; pin 15 of 74LS150)
+constexpr uint8_t PIN_ADDR1 = 3;       // 2's bit of mux/demux address (pin 2 of 74HC259; pin 10 of 74LS151; pin 14 of 74LS150)
+constexpr uint8_t PIN_ADDR2 = 4;       // 4's bit of mux/demux address (pin 3 of 74HC259; pin 9 of 74LS151; pin 13 of 74LS150)
 #ifdef MUX16
-const PROGMEM uint8_t PIN_ADDR3 = A1;      // 8's bit of mux address (pin 11 of 74HS150)
+constexpr uint8_t PIN_ADDR3 = A1;      // 8's bit of mux address (pin 11 of 74HS150)
 #endif
-const PROGMEM uint8_t PIN_MUX_DATA_ = A0;  // inverted data from mux (pin 6 of 74LS151; pin 10 of 74LS150)
+constexpr uint8_t PIN_MUX_DATA_ = A0;  // inverted data from mux (pin 6 of 74LS151; pin 10 of 74LS150)
 
-const PROGMEM uint8_t PIN_DEMUX_DATA = 5;  // data to demux (pin 13 of 74HC259)
-const PROGMEM uint8_t PIN_LATCH0 = A3; // latch enable for outputs 0-7 (pin 14 of 74HC259 #0)
+constexpr uint8_t PIN_DEMUX_DATA = 5;  // data to demux (pin 13 of 74HC259)
+constexpr uint8_t PIN_LATCH0 = A3; // latch enable for outputs 0-7 (pin 14 of 74HC259 #0)
 #ifdef DEMUX16
-const PROGMEM uint8_t PIN_LATCH1 = A2; // latch enable for outputs 8-15 (pin 14 of 74HC259 #1)
+constexpr uint8_t PIN_LATCH1 = A2; // latch enable for outputs 8-15 (pin 14 of 74HC259 #1)
 #endif
 
 bool readMux(muxAddr_t addr);
