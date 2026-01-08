@@ -41,6 +41,8 @@ If you need analog inputs, on the Nano V3 pins A6, A7 are available, but we didn
 
 ![Plexorino](plex-16-16.jpg)
 
+The pull-up resistors on the mux input pins are not actually needed: Every input is already a pull-up because of the internal circuitry of the chip. See the data sheet for confirmation.
+
 ## Configuration
 
 If your mux use case is 8-input (74LS151) only and you want to use pin A1 for something else, then define `MUX8_ONLY` at compile time. But in any case, it will still work; you just won't be able to use pin A1 for anything else because it will be dedicated to address line 3 for the 74LS150.`
