@@ -1,0 +1,100 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Arduino: Compile Example",
+			"type": "shell",
+			"command": "${env:ARDUINO_CLI}",
+			"args": [
+				"compile",
+				"--fqbn",
+				"${input:fqbn}",
+				"examples/${input:example}"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Arduino: Upload Example",
+			"type": "shell",
+			"command": "${env:ARDUINO_CLI}",
+			"args": [
+				"upload",
+				"-p",
+				"${input:port}",
+				"--fqbn",
+				"${input:fqbn}",
+				"examples/${input:example}"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Arduino: Serial Monitor",
+			"type": "shell",
+			"command": "${env:ARDUINO_CLI}",
+			"args": [
+				"monitor",
+				"-p",
+				"${input:port}",
+				"--baud",
+				"${input:baud}"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared"
+			}
+		},
+		{
+			"label": "Arduino: Compile All Examples",
+			"type": "shell",
+			"command": "powershell",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}/build-all-examples.ps1",
+				"${input:fqbn}"
+			],
+			"presentation": {
+				"reveal": "always",
+				"panel": "shared"
+			}
+		}
+	],
+	"inputs": [
+		{
+			"id": "example",
+			"type": "promptString",
+			"description": "Example folder name inside examples/ (case-sensitive)",
+			"default": "ExampleSketch"
+		},
+		{
+			"id": "fqbn",
+			"type": "promptString",
+			"description": "Fully Qualified Board Name (eg: arduino:avr:nano or arduino:avr:nano:cpu=atmega328p)",
+			"default": "arduino:avr:nano"
+		},
+		{
+			"id": "port",
+			"type": "promptString",
+			"description": "Serial port (eg: COM3 or /dev/ttyUSB0)",
+			"default": "COM7
+		},
+		{
+			"id": "baud",
+			"type": "promptString",
+			"description": "Baud rate for serial monitor",
+			"default": "115200"
+		}
+	]
+}
