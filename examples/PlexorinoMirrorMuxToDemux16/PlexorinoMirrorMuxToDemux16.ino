@@ -1,16 +1,28 @@
 #include <Arduino.h>
 #include <Plexorino.h>
 
+
+#if defined(__AVR__)
+uint16_t boots __attribute__((section(".noinit")));
+uint8_t  mcusr_mirror __attribute__((section(".noinit")));
+
+void get_mcusr(void) __attribute__((naked)) __attribute__((section(".init3")));
+void get_mcusr(void) {
+  mcusr_mirror = MCUSR;
+  MCUSR = 0;
+}
+#endif
+
 /*
   Mirror mux inputs to demux outputs (16-bit)
   ------------------------------------------
-  Reads all mux channels and writes the same pattern to demux outputs.
+  Reads all mux channels and writes the same bits to demux outputs.
 
   Useful when:
     - you have switches/sensors on mux inputs
     - you want LEDs on demux outputs to reflect state
 
-  If you only have 8-wide hardware, change both begin* calls to W8.
+  If you have 8-wide hardware, change both begin* calls to W8.
 */
 
 void setup() {
@@ -20,14 +32,7 @@ void setup() {
 }
 
 void loop() {
-  uint16_t bits = 0;
-
   for (uint8_t i = 0; i < muxCount(); i++) {
-    if (readMux(i)) {
-      bits |= (uint16_t(1) << i);
-    }
+    writeDemux(i, readMux(i));
   }
-
-  writeBitsDemux(bits);
-  delay(20);
 }
