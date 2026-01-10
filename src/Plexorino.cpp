@@ -58,8 +58,8 @@ void beginDemux(PlexWidth width) {
     pinMode(PIN_LATCH1, OUTPUT);
   }
 
-  resetDemux();
   g_demuxBegun = true;
+  resetDemux();
 }
 
 PlexWidth muxWidth() {
