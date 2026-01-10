@@ -1,50 +1,36 @@
 # Plexorino
 
-With additional hardware, we can expand the number of digital input/output pins on the Arduino beyond the bare GPIO provided.
+Plexorino is a small Arduino library for:
 
-Plexorino brings you skeleton code for multiplexer and demultiplexer to achieve this. Take this logic and use it in your own circuit project.
+- **Multiplexing GPIO inputs** using:
+  - **74LS151** (8-input mux), or
+  - **74LS150** (16-input mux)
+- **Demultiplexing GPIO outputs** using:
+  - **74HC259** (8-bit addressable latch)
+  - and optionally a second 74HC259 for 16 outputs
 
-## Introduction
+This library intentionally uses a **fixed, hardcoded pinout** (by design).
 
-The most limiting thing about the Arduino is its small number of GPIO pins. So, how to get around this?
+## Documentation
 
-Plexorino takes over some of the Arduino's GPIO pins, but repays back many times over. Nothing comes for free! But, the rewards are exponential. For instance, by giving up 5 control pins to Plexorino/demux, you get back 8 outputs, for a net gain of 3 outputs. And for giving up 6 control pins, you get back 16, for a net gain of 10 outputs.
+For deeper detail, see:
 
-You will need to build some electronics. The parts you need are generally still available, even though some of them were introduced in the 1970s. They are multiplexer/demultiplexer chips, that you can buy on EBay or Amazon pretty easily.
+- [Demux details](README_demux.md)
+- [Mux 8-bit mode (74LS151)](README_mux8.md)
+- [Mux 16-bit mode (74LS150)](README_mux16.md)
 
-## Use cases
+---
 
-| module          | use case                | I.C. used  | GPIO pins used |
-|-----------------|-------------------------|------------|----------------|
-| [demux](/README_demux.md) | 8-output demultiplexer  | [74HC259](doc/74HC259.pdf)  | 2, 3, 4, 5, A3     |
-| [demux](/README_demux.md) | 16-output demultiplexer | (2x) [74HC259](doc/74HC259.pdf) | 2, 3, 4, 5, A2, A3 |
-| [mux8](/README_mux8.md)   | 8-to-1 multiplexer      | [74LS151](doc/74LS151.pdf)  | 2, 3, 4, A0        |
-| [mux16](/README_mux16.md) | 16-to-1 multiplexer     | [74LS150](doc/74LS151.pdf)  | 2, 3, 4, A0, A1    |
+## Key idea: runtime width selection (no compiler flags)
 
-## GPIO optimization
+Earlier versions used compile-time defines to choose 8 vs 16. Those are gone.
 
-A design goal was to minimize the number of GPIO pins used. In particular:
+Now you choose **at runtime**:
 
-- We have left pins 9-13 free, which are used by SPI.
-- We have left pins A4, A5 free, which are used by I2C.
-- We have left pins 6, 7, 8 free, of which pin 6 is PWM-capable.
+```cpp
+#include <Plexorino.h>
 
-## Basic setup
-
-This example simply breaks out the 16 inputs and outputs, to connect to a breadboard circuit. The inputs are green, and the outputs are blue.
-
-The SPI and I2C bus are also exposed on the yellow sockets, and pins 6, 7, 8 directly on the Arduino, which weren't used for anything else.
-
-If you need analog inputs, on the Nano V3 pins A6, A7 are available, but we didn't socket them here.
-
-*(Correction: 74LS259 should be 74HC259)*
-
-![Plexorino](plex-16-16.jpg)
-
-The pull-up resistors on the mux input pins are not actually needed: Every input is already a pull-up because of the internal circuitry of the chip. See the data sheet for confirmation.
-
-## Configuration
-
-If your mux use case is 8-input (74LS151) only and you want to use pin A1 for something else, then define `MUX8_ONLY` at compile time. But in any case, it will still work; you just won't be able to use pin A1 for anything else because it will be dedicated to address line 3 for the 74LS150.`
-
-If your demux use case is 8-output (1x 74HC259) and you want to use A2 for something else, then define DEMUX8_ONLY at compile time. This will free up pin A2. Otherwise it will still work; you will just not be able to use A2 for anything else.
+void setup() {
+  beginMux(PlexWidth::W8);       // or W16
+  beginDemux(PlexWidth::W16);    // or W8
+}
