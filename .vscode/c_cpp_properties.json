@@ -22,7 +22,9 @@
                 "-x",
                 "c++",
                 "-std=gnu++11",
-                "-mmcu=atmega328p"
+                "-mmcu=atmega328p",
+                "--library",
+                "${workspaceFolder}/src"
             ],
             "intelliSenseMode": "gcc-x64",
             "cStandard": "c11",
