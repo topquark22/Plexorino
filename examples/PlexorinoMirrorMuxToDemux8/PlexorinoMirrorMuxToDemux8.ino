@@ -1,26 +1,33 @@
+// PlexorinoMirrorMuxToDemux8.ino
 #include <Arduino.h>
 #include <Plexorino.h>
 
 /*
-  Mirror mux inputs to demux outputs (8-bit)
-  ------------------------------------------
-  Reads all mux channels and writes the same bits to demux outputs.
+  PlexorinoMirrorMuxToDemux8
+  -------------------------
+  Mirrors 8 mux inputs to 8 demux outputs.
 
-  Useful when:
-    - you have switches/sensors on mux inputs
-    - you want LEDs on demux outputs to reflect state
+  Hardware:
+    - Mux: 74LS151 (8:1)
+    - Demux: 74HC259 (8 outputs)
 
-  If you have 16-wide hardware, change both begin* calls to W16.
+  Notes:
+    - Uses the new split classes: PlexorinoMux / PlexorinoDemux
+    - Width is selected at runtime (W8 here)
+    - Shared address lines are driven only during each read/write and then released to INPUT
 */
 
+PlexorinoMux   mux(PlexWidth::W8);
+PlexorinoDemux demux(PlexWidth::W8);
+
 void setup() {
-  beginMux(PlexWidth::W8);
-  beginDemux(PlexWidth::W8);
-  resetDemux();
+  mux.begin();
+  demux.begin();
+  demux.reset();  // optional, but usually nice at startup
 }
 
 void loop() {
-  for (uint8_t i = 0; i < muxCount(); i++) {
-    writeDemux(i, readMux(i));
+  for (muxAddr_t i = 0; i < mux.count(); i++) {
+    demux.write(i, mux.read(i));
   }
 }

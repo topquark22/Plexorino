@@ -1,27 +1,35 @@
+// PlexorinoDemux16Basic.ino
 #include <Arduino.h>
 #include <Plexorino.h>
 
-static void chase(uint16_t delayMs) {
-  for (uint8_t i = 0; i < demuxCount(); i++) {
-    writeDemux(i, true);
-    delay(delayMs);
-    writeDemux(i, false);
-  }
-}
+/*
+  PlexorinoDemux16Basic
+  --------------------
+  Basic example showing how to control individual demux outputs (16-bit).
+
+  Hardware:
+    - Demux: two 74HC259 chips (16 outputs total)
+
+  Behaviour:
+    - Sequentially turns each output ON, then OFF
+
+  Notes:
+    - Uses PlexorinoDemux only
+    - Explicit begin()
+    - Uses muxAddr_t for address variables
+*/
+
+PlexorinoDemux demux(PlexWidth::W16);
 
 void setup() {
-  beginDemux(PlexWidth::W16);
-  resetDemux();
+  demux.begin();
+  demux.reset();   // start from a known state
 }
 
 void loop() {
-  chase(50);
-
-  // Show writeBitsDemux across 16 lines (low 16 bits used)
-  writeBitsDemux(0xAAAA);
-  delay(350);
-  writeBitsDemux(0x5555);
-  delay(350);
-  resetDemux();
-  delay(350);
+  for (muxAddr_t i = 0; i < demux.count(); i++) {
+    demux.write(i, true);
+    delay(200);
+    demux.write(i, false);
+  }
 }

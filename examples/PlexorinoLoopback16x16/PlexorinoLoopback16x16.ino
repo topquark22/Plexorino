@@ -1,63 +1,66 @@
+// PlexorinoLoopback16x16.ino
 #include <Arduino.h>
 #include <Plexorino.h>
 
 /*
-  Loopback test (16x16)
+  PlexorinoLoopback16x16
   ---------------------
-  Intended wiring:
-    - Connect each DEMUX output D0..D15 to the corresponding MUX input channel 0..15.
-    - beginDemux(W16) drives outputs.
-    - beginMux(W16) reads them back.
+  Loopback test for 16-bit Plexorino hardware.
+
+  Hardware:
+    - Mux:   74LS150 (16 inputs)
+    - Demux: two 74HC259 chips (16 outputs total)
+
+  Wiring:
+    - Each demux output is wired back to the corresponding mux input.
+
+  Behaviour:
+    - Walks a single HIGH bit across demux outputs (0..15)
+    - Reads back all mux inputs
+    - Prints the observed pattern to Serial
 
   Notes:
-    - readMux() is inverted relative to the mux output pin wiring (library already inverts),
-      so "got" should match "expected" in normal use.
+    - Uses both PlexorinoMux and PlexorinoDemux
+    - Shared address lines (ADDR0..ADDR3) are driven only during each
+      read/write and released to high-Z immediately afterward
+    - Useful for validating full 16×16 wiring integrity
 */
 
-static void printMismatch(uint8_t ch, bool expected, bool got) {
-  Serial.print("Mismatch CH");
-  if (ch < 10) Serial.print('0');
-  Serial.print(ch);
-  Serial.print(" expected=");
-  Serial.print(expected ? "1" : "0");
-  Serial.print(" got=");
-  Serial.println(got ? "1" : "0");
-}
+PlexorinoMux   mux(PlexWidth::W16);
+PlexorinoDemux demux(PlexWidth::W16);
 
 void setup() {
   Serial.begin(115200);
-  while (!Serial) {}
 
-  beginDemux(PlexWidth::W16);
-  beginMux(PlexWidth::W16);
+  mux.begin();
+  demux.begin();
+  demux.reset();
 
-  resetDemux();
-
-  Serial.println();
-  Serial.println("PlexorinoLoopback16x16");
+  Serial.println(F("PlexorinoLoopback16x16 starting"));
 }
 
 void loop() {
-  // One-hot walk, verify each channel.
-  for (uint8_t ch = 0; ch < 16; ch++) {
-    resetDemux();
-    writeDemux(ch, true);
-    delay(5); // settle
+  for (uint8_t i = 0; i < demux.count(); i++) {
+    // Drive exactly one output HIGH
+    demux.reset();
+    demux.write(i, true);
 
-    bool ok = true;
-    for (uint8_t i = 0; i < 16; i++) {
-      bool expected = (i == ch);
-      bool got = readMux(i);
-      if (got != expected) {
-        ok = false;
-        printMismatch(i, expected, got);
-      }
+    // Small settle time for wiring / logic
+    delay(2);
+
+    // Read back all mux inputs
+    Serial.print(F("Out "));
+    Serial.print(i);
+    Serial.print(F(" -> In: "));
+
+    for (uint8_t j = 0; j < mux.count(); j++) {
+      Serial.print(mux.read(j) ? '1' : '0');
+      if (j != mux.count() - 1) Serial.print(' ');
     }
 
-    Serial.print("Step ");
-    if (ch < 10) Serial.print('0');
-    Serial.print(ch);
-    Serial.println(ok ? " OK" : " FAIL");
+    Serial.println();
     delay(200);
   }
+
+  Serial.println();
 }

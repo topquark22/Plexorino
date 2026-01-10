@@ -1,73 +1,124 @@
 #pragma once
-/**
- * Plexorino: hardcoded-pin interface to:
- *   - 74HC259 8-bit addressable latch (demultiplexed outputs)
- *   - 74LS151 8-input multiplexer
- *   - 74LS150 16-input multiplexer
+/*
+ * Plexorino.h
  *
- * Key refactor:
- *   - No compile flags to choose 8 vs 16.
- *   - You select width at runtime via beginMux()/beginDemux().
- *   - Pins remain hardcoded (by design).
+ * Plexorino is a small Arduino library for:
+ *  - Multiplexing GPIO inputs using 74LS151 (8) or 74LS150 (16)
+ *  - Demultiplexing GPIO outputs using 74HC259 (8) or two 74HC259 (16)
+ *
+ * Refactor notes:
+ *  - No compile-time width flags.
+ *  - Two independent classes: PlexorinoMux and PlexorinoDemux.
+ *  - Hardcoded pinout by design.
+ *  - Address lines ADDR0..ADDR2 are shared.
+ *  - ADDR3 is driven only by the mux in W16 mode.
+ *  - BOTH classes release ALL address lines (including ADDR3) to high-Z (INPUT)
+ *    when idle, to avoid contention when mux and demux coexist or when external
+ *    circuitry shares the bus.
+ *
+ * Platform: intended for Arduino AVR (e.g., Uno/Nano), but generally portable.
  */
 
 #include <Arduino.h>
 
-// Outputs on 74HC259 chip #0 are D0-D7; on chip #1 are D8-D15.
+// -------------------------
+// Types
+// -------------------------
+
+enum class PlexWidth : uint8_t {
+  W8  = 8,
+  W16 = 16
+};
+
+// Address type for mux/demux channels.
+//  - W8  valid range:  0..7
+//  - W16 valid range:  0..15
 using muxAddr_t = uint8_t;
 
-enum class PlexWidth : uint8_t { W8 = 8, W16 = 16 };
+// -------------------------
+// Hardcoded pinout (by design)
+// -------------------------
+//
+// Shared address lines (mux + demux)
+static constexpr uint8_t PIN_ADDR0 = 2;  // D2
+static constexpr uint8_t PIN_ADDR1 = 3;  // D3
+static constexpr uint8_t PIN_ADDR2 = 4;  // D4
+
+// Address bit 3:
+//  - Driven by PlexorinoMux in W16 mode
+//  - Released to INPUT (high-Z) by BOTH classes when idle
+static constexpr uint8_t PIN_ADDR3 = A1; // mux address bit 3 (W16 mux only)
+
+// Mux-only data pin
+static constexpr uint8_t PIN_MUX_DATA_ = A0;  // mux output (read inverted)
+
+// Demux-only pins
+static constexpr uint8_t PIN_DEMUX_DATA = 5;   // D5: data into 74HC259
+static constexpr uint8_t PIN_LATCH0     = A3;  // outputs 0..7 latch enable
+static constexpr uint8_t PIN_LATCH1     = A2;  // outputs 8..15 latch enable (W16 demux only)
 
 // -------------------------
-// Hardcoded pin assignment
+// PlexorinoMux
 // -------------------------
-// 74HC259 address pins: (note we don't use any SPI or I2C pins, leaving them free)
-constexpr uint8_t PIN_ADDR0     = 2;   // 1's bit of mux/demux address (74HC259 pin 1; 74LS151 pin 11; 74LS150 pin 15)
-constexpr uint8_t PIN_ADDR1     = 3;   // 2's bit of mux/demux address (74HC259 pin 2; 74LS151 pin 10; 74LS150 pin 14)
-constexpr uint8_t PIN_ADDR2     = 4;   // 4's bit of mux/demux address (74HC259 pin 3; 74LS151 pin 9;  74LS150 pin 13)
+//
+// Reads a single mux channel via 74LS151 (W8) or 74LS150 (W16).
+// Output is read inverted: read(addr) returns !digitalRead(PIN_MUX_DATA).
+//
+// Address lines are driven only during read() and then released to INPUT.
+class PlexorinoMux {
+public:
+  explicit PlexorinoMux(PlexWidth width = PlexWidth::W16);
 
-// 16-bit mux only (74LS150): 8's address bit
-constexpr uint8_t PIN_ADDR3     = A1;  // 74LS150 pin 11 (A3)
+  // Configure only mux-related pins (shared address lines are driven per-read).
+  void begin();
 
-// Mux data input (inverted from chip output)
-constexpr uint8_t PIN_MUX_DATA_ = A0;  // 74LS151 pin 5/6 output (W); 74LS150 pin 10 output (W)
+  // Returns true once begin() has been called.
+  bool begun() const;
 
-// Demux data and latch enables
-constexpr uint8_t PIN_DEMUX_DATA = 5;  // 74HC259 pin 13 (D)
-constexpr uint8_t PIN_LATCH0     = A3; // latch enable for outputs 0-7 (74HC259 #0 pin 14 / G)
-constexpr uint8_t PIN_LATCH1     = A2; // latch enable for outputs 8-15 (74HC259 #1 pin 14 / G) -- only used in 16-bit demux mode
+  PlexWidth width() const;
+  uint8_t count() const;   // 8 or 16 depending on width()
 
-// -------------------------
-// Initialization / mode
-// -------------------------
-void beginMux(PlexWidth width = PlexWidth::W16);
-void beginDemux(PlexWidth width = PlexWidth::W16);
+  // Read a mux channel. Returns false if not begun() or addr out of range.
+  bool read(muxAddr_t addr) const;
 
-PlexWidth muxWidth();
-PlexWidth demuxWidth();
-
-uint8_t muxCount();    // 8 or 16
-uint8_t demuxCount();  // 8 or 16
+private:
+  PlexWidth width_;
+  bool begun_;
+};
 
 // -------------------------
-// Core operations
+// PlexorinoDemux
 // -------------------------
+//
+// Writes a single demux output via 74HC259 (W8) or two 74HC259 (W16).
+//
+// Address lines are driven only during write() and then released to INPUT.
+// ADDR3 is not driven by demux, but IS released to INPUT to keep the bus clean.
+class PlexorinoDemux {
+public:
+  explicit PlexorinoDemux(PlexWidth width = PlexWidth::W16);
 
-// Read the input at mux address. Output from the mux comes back inverted.
-bool readMux(muxAddr_t addr);
+  // Configure only demux-related pins (shared address lines are driven per-write).
+  void begin();
 
-// Write a single demux output line.
-void writeDemux(muxAddr_t addr, bool value);
+  // Returns true once begin() has been called.
+  bool begun() const;
 
-// Write bits of a value across all output lines (uses low demuxCount() bits).
-void writeBitsDemux(uint16_t bits);
+  PlexWidth width() const;
+  uint8_t count() const;   // 8 or 16 depending on width()
 
-// Reset all output latches to 0 (done manually; does not use the chip reset pin).
-void resetDemux();
+  // Write a single output. No-op if not begun() or addr out of range.
+  void write(muxAddr_t addr, bool value) const;
 
-// -------------------------
-// Backward-compat aliases
-// -------------------------
-// These preserve older sketch behavior: they default to 16-bit mode.
-inline void setupMux()   { beginMux(PlexWidth::W16); }
-inline void setupDemux() { beginDemux(PlexWidth::W16); }
+  // Write multiple outputs from low bits of 'bits' (uses count() bits).
+  // No-op if not begun().
+  void writeBits(uint16_t bits) const;
+
+  // Convenience: clear all outputs to 0 (manual reset; does not use 74HC259 reset pin).
+  // No-op if not begun().
+  void reset() const;
+
+private:
+  PlexWidth width_;
+  bool begun_;
+};
