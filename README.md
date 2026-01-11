@@ -21,6 +21,9 @@ no compile-time flags, no auto-initialization, no hidden resets.
   - `PlexorinoMux` — inputs only
   - `PlexorinoDemux` — outputs only
 - **Hardcoded pinout by design**
+- - Mux takes ownership of pins D2, D3, D4, A0 in both 8- and 16-bit modes, and A1 in 16-bit mode
+  - Demux takes ownership of pins D2, D3, D4, D5, A3 in both 8- and 16-bit modes, and A2 in 16-bit mode
+  - This leaves pins free for SPI, I2C, PWM and ADC
 - **Explicit `begin()` required**
 - **Shared address bus is driven only when needed**
   - Address lines are released to **high-Z (INPUT)** immediately after each operation
@@ -173,4 +176,5 @@ This allows:
 - Bit-pattern writes (`writeBits()`)
 
 - ![16 mux, 16 demux](plex-16-16.jpg)
+
 
