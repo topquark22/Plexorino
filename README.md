@@ -171,3 +171,6 @@ This allows:
 - Demux-only usage (8 / 16)
 - Full loopback tests (8×8, 16×16)
 - Bit-pattern writes (`writeBits()`)
+
+- ![16 mux, 16 demux](plex-16-16.jpg)
+
