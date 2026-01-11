@@ -45,9 +45,6 @@ static inline void releaseAddrLines_() {
   pinMode(PIN_ADDR0, INPUT);
   pinMode(PIN_ADDR1, INPUT);
   pinMode(PIN_ADDR2, INPUT);
-
-  // Also release ADDR3 to be a good bus citizen, even though demux doesn't use it.
-  pinMode(PIN_ADDR3, INPUT);
 }
 
 // -------------------------
@@ -119,3 +116,4 @@ void PlexorinoDemux::reset() const {
   if (!begun_) return;
   writeBits(0);
 }
+
