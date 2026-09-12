@@ -176,5 +176,5 @@ This allows:
 - Bit-pattern writes (`writeBits()`)
 
 - ![16 mux, 16 demux](plex-16-16.jpg)
-
+Note: Those pull-up resistors are actually not necessary.
 
